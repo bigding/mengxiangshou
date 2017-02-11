@@ -35,7 +35,7 @@
                             <button data-toggle="dropdown" class="btn dropdown-toggle"><span class="caret"></span></button>
                             <ul class="dropdown-menu">
                                 <li><a href="#">查看宠物信息</a></li>
-                                <li><a href="#">添加宠物信息</a></li>
+                                <li><a href="petInfo-Add.php">添加宠物信息</a></li>
                             </ul>
                         </div>
                     </div>
@@ -46,20 +46,16 @@
                     </div>
                     <div class="widget-content nopadding">
                         <table class="table table-bordered data-table">
-                            <!--姓名,密码,电话号码,邮件地址,身高,体重,性别,生日,拥有宠物,金币数量,操作:查看具体的宠物和拥有的服装类型,签名还有具体运动完成情况,历史体重,日常记录-->
+                            <!--宠物名称,宠物类别,宠物价值,宠物简介.操作:宠物详情,查看图片-->
                             <thead>
                             <tr>
-                                <th>姓名</th>
-                                <th>密码</th>
-                                <th>电话号码</th>
-                                <th>邮件地址</th>
-                                <th>身高</th>
-                                <th>体重</th>
-                                <th>性别</th>
-                                <th>生日</th>
-                                <th>拥有宠物数量</th>
-                                <th>拥有金币数量</th>
-                                <th>相关操作</th>
+                                <th>名称</th>
+                                <th>类别</th>
+                                <th>价值</th>
+                                <th>简介</th>
+                                <th>详情</th>
+                                <th>图片</th>
+                                <th>操作</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -67,14 +63,12 @@
                                 <td>**</td>
                                 <td>**</td>
                                 <td>***</td>
-                                <td>*****</td>
-                                <td>***</td>
-                                <td>**</td>
-                                <td>**</td>
                                 <td>***</td>
                                 <td>***</td>
-                                <td>******</td>
-                                <td>******</td>
+                                <td>***</td>
+                                <td>
+                                     <a href="petInfo-Edit.php" class="btn btn-success btn-mini"  data-original-title="编辑信息">编辑</a>
+                                </td>
                             </tr>
                             </tbody>
                         </table>

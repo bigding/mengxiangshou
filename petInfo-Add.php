@@ -21,8 +21,8 @@
 <div id="content">
     <div id="content-header">
         <div id="breadcrumb"><a href="userInfo-View.php" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>
-            用户信息</a></div>
-        <h1>用户信息</h1>
+            宠物信息</a></div>
+        <h1>宠物信息</h1>
     </div>
     <div class="container-fluid">
         <hr>
@@ -34,57 +34,61 @@
                             <button class="btn">添加宠物信息</button>
                             <button data-toggle="dropdown" class="btn dropdown-toggle"><span class="caret"></span></button>
                             <ul class="dropdown-menu">
-                                <li><a href="#">查看宠物信息</a></li>
+                                <li><a href="petInfo-View.php">查看宠物信息</a></li>
                                 <li><a href="#">添加宠物信息</a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
+                <!--宠物名称,宠物类别,宠物价值,宠物简介.操作:宠物详情,查看图片-->
                 <div class="widget-box">
                     <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
                         <h5>信息录入框</h5>
                     </div>
-                    <!--姓名,密码,电话号码,邮件地址,身高,体重,性别,生日,拥有宠物,金币数量,操作:查看具体的宠物和拥有的服装类型,签名还有具体运动完成情况,历史体重,日常记录-->
                     <div class="widget-content nopadding">
                         <form action="#" method="get" class="form-horizontal">
                             <div class="control-group">
-                                <label class="control-label">First Name :</label>
+                                <label class="control-label">名称 :</label>
                                 <div class="controls">
-                                    <input type="text" class="span11" placeholder="First name" />
+                                    <input type="text" class="span11" placeholder="名称:##"/>
                                 </div>
                             </div>
                             <div class="control-group">
-                                <label class="control-label">Last Name :</label>
+                                <label class="control-label">宠物类别</label>
                                 <div class="controls">
-                                    <input type="text" class="span11" placeholder="Last name" />
+                                    <select >
+                                        <option>类别一</option>
+                                        <option>类别二</option>
+                                        <option>类别三</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="control-group">
-                                <label class="control-label">Password input</label>
+                                <label class="control-label">宠物价值 :</label>
                                 <div class="controls">
-                                    <input type="password"  class="span11" placeholder="Enter Password"  />
+                                    <input type="password"  class="span11" placeholder="电宠物:###"/>
                                 </div>
                             </div>
                             <div class="control-group">
-                                <label class="control-label">Company info :</label>
+                                <label class="control-label">宠物简介 :</label>
                                 <div class="controls">
-                                    <input type="text" class="span11" placeholder="Company name" />
+                                    <input type="text" class="span11"/>
                                 </div>
                             </div>
                             <div class="control-group">
-                                <label class="control-label">Description field:</label>
+                                <label class="control-label">宠物详情</label>
                                 <div class="controls">
-                                    <input type="text" class="span11" />
-                                    <span class="help-block">Description field</span> </div>
+                                    <textarea class="span11"></textarea>
+                                </div>
                             </div>
                             <div class="control-group">
-                                <label class="control-label">Message</label>
+                                <label class="control-label">描述图片</label>
                                 <div class="controls">
-                                    <textarea class="span11" ></textarea>
+                                    <input type="file" />
                                 </div>
                             </div>
                             <div class="form-actions">
-                                <button type="submit" class="btn btn-success">Save</button>
+                                <button type="submit" class="btn btn-success">提交</button>
                             </div>
                         </form>
                     </div>

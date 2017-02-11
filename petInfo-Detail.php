@@ -25,41 +25,119 @@
         <h1>宠物信息</h1>
     </div>
     <div class="container-fluid">
+        <!--宠物名称,宠物类别,宠物价值,宠物简介.操作:宠物详情,查看图片-->
         <hr>
         <div class="row-fluid">
             <div class="span12">
-                <div class="widget-box">
-                    <div class="widget-content">
-                        <div class="btn-group">
-                            <button class="btn">查看宠物信息</button>
-                            <button data-toggle="dropdown" class="btn dropdown-toggle"><span class="caret"></span></button>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">查看宠物信息</a></li>
-                                <li><a href="#">添加宠物信息</a></li>
+                <div class="span9">
+                    <div class="widget-box">
+                        <div class="widget-title"> <span class="icon"> <i class="icon-eye-open"></i> </span>
+                            <h5>基本信息</h5>
+                        </div>
+                        <div class="widget-content nopadding">
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>项目</th>
+                                    <th>属性</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>姓名</td>
+                                    <td>12444</td>
+                                </tr>
+                                <tr>
+                                    <td>密码</td>
+                                    <td>10455</td>
+                                </tr>
+                                <tr>
+                                    <td>电话号码</td>
+                                    <td>8455</td>
+                                </tr>
+                                <tr>
+                                    <td>邮件地址</td>
+                                    <td>4456</td>
+                                </tr>
+                                <tr>
+                                    <td>身高</td>
+                                    <td>2210</td>
+                                </tr>
+                                <tr>
+                                    <td>体重</td>
+                                    <td>2210</td>
+                                </tr>
+                                <tr>
+                                    <td>性别</td>
+                                    <td>2210</td>
+                                </tr>
+                                <tr>
+                                    <td>生日</td>
+                                    <td>2210</td>
+                                </tr>
+                                <tr>
+                                    <td>拥有宠物</td>
+                                    <td>2210</td>
+                                </tr>
+                                <tr>
+                                    <td>金币数量</td>
+                                    <td>2210</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="span3">
+                    <div class="widget-box">
+                        <div class="widget-title"> <span class="icon"> <i class="icon-file"></i> </span>
+                            <h5>签名</h5>
+                        </div>
+                        <div class="widget-content nopadding">
+                            <ul class="recent-posts">
+                                <li>
+                                    <div class="article-post">
+                                        <span class="user-info">  </span>
+                                        <p>珊妹你好珊妹你好珊妹你好珊妹你好珊妹你好珊妹你好珊妹你好珊妹你好珊妹你好珊妹你好珊妹你好</p>
+                                    </div>
+                                </li>
                             </ul>
                         </div>
                     </div>
                 </div>
                 <div class="widget-box">
                     <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
-                        <h5>Data table</h5>
+                        <h5>历史体重</h5>
                     </div>
                     <div class="widget-content nopadding">
                         <table class="table table-bordered data-table">
-                            <!--姓名,密码,电话号码,邮件地址,身高,体重,性别,生日,拥有宠物,金币数量,操作:查看具体的宠物和拥有的服装类型,签名还有具体运动完成情况,历史体重,日常记录-->
                             <thead>
                             <tr>
-                                <th>姓名</th>
-                                <th>密码</th>
-                                <th>电话号码</th>
-                                <th>邮件地址</th>
-                                <th>身高</th>
+                                <th>日期</th>
                                 <th>体重</th>
-                                <th>性别</th>
-                                <th>生日</th>
-                                <th>拥有宠物数量</th>
-                                <th>拥有金币数量</th>
-                                <th>相关操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="gradeA">
+                                <td>****</td>
+                                <td>****</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="widget-box">
+                    <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+                        <h5>历史运动</h5>
+                    </div>
+                    <div class="widget-content nopadding">
+                        <table class="table table-bordered data-table">
+                            <thead>
+                            <tr>
+                                <th>日期</th>
+                                <th>运动项目</th>
+                                <th>悬赏金额</th>
+                                <th>完成情况</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -68,13 +146,60 @@
                                 <td>**</td>
                                 <td>***</td>
                                 <td>*****</td>
-                                <td>***</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="widget-box">
+                    <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+                        <h5>宠物信息</h5>
+                    </div>
+                    <div class="widget-content nopadding">
+                        <table class="table table-bordered data-table">
+                            <thead>
+                            <tr>
+                                <th>宠物名称</th>
+                                <th>宠物类别</th>
+                                <th>宠物价值</th>
+                                <th>宠物简介</th>
+                                <th>宠物图片</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="gradeA">
                                 <td>**</td>
                                 <td>**</td>
                                 <td>***</td>
+                                <td>*****</td>
+                                <td>*****</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="widget-box">
+                    <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+                        <h5>宠物服装信息</h5>
+                    </div>
+                    <div class="widget-content nopadding">
+                        <table class="table table-bordered data-table">
+                            <thead>
+                            <tr>
+                                <th>服装名称</th>
+                                <th>服装类别</th>
+                                <th>服装价值</th>
+                                <th>服装简介</th>
+                                <th>服装图片</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="gradeA">
+                                <td>**</td>
+                                <td>**</td>
                                 <td>***</td>
-                                <td>******</td>
-                                <td>******</td>
+                                <td>*****</td>
+                                <td>*****</td>
                             </tr>
                             </tbody>
                         </table>
@@ -82,7 +207,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 <?php
