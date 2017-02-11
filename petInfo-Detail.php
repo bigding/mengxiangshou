@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>管理系统概括</title>
+    <title>宠物信息管理</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/bootstrap.min.css" />
@@ -20,14 +20,26 @@
 ?>
 <div id="content">
     <div id="content-header">
-        <div id="breadcrumb"><a href="index.php" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>
-            用户信息</a></div>
-        <h1>用户信息</h1>
+        <div id="breadcrumb"><a href="userInfo-View.php" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>
+            宠物信息</a></div>
+        <h1>宠物信息</h1>
     </div>
     <div class="container-fluid">
         <hr>
         <div class="row-fluid">
             <div class="span12">
+                <div class="widget-box">
+                    <div class="widget-content">
+                        <div class="btn-group">
+                            <button class="btn">查看宠物信息</button>
+                            <button data-toggle="dropdown" class="btn dropdown-toggle"><span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">查看宠物信息</a></li>
+                                <li><a href="#">添加宠物信息</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
                 <div class="widget-box">
                     <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
                         <h5>Data table</h5>

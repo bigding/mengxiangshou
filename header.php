@@ -49,8 +49,8 @@
 
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-list"></i>Forms</a>
     <ul>
-        <li><a href="#"><i class="icon icon-home"></i> <span>用户信息</span></a></li><!--姓名,密码,电话号码,邮件地址,身高,体重,性别,签名,生日,拥有宠物,金币数量,操作:查看具体的宠物和拥有的服装类型还有具体运动完成情况,历史体重,日常记录-->
-        <li><a href="#"><i class="icon icon-signal"></i> <span>宠物信息</span></a></li><!--宠物名称,宠物类别,宠物价值,宠物简介.操作:宠物详情,查看图片-->
+        <li><a href="userInfo-View.php"><i class="icon icon-home"></i> <span>用户信息</span></a></li><!--姓名,密码,电话号码,邮件地址,身高,体重,性别,签名,生日,拥有宠物,金币数量,操作:查看具体的宠物和拥有的服装类型还有具体运动完成情况,历史体重,日常记录-->
+        <li><a href="petInfo-View.php"><i class="icon icon-signal"></i> <span>宠物信息</span></a></li><!--宠物名称,宠物类别,宠物价值,宠物简介.操作:宠物详情,查看图片-->
         <li><a href="#"><i class="icon icon-inbox"></i> <span>服装信息</span></a></li><!--服装名称,服装价值,服装简介,操作:查看详情,查看图片-->
         <li><a href="#"><i class="icon icon-th"></i> <span>运动信息</span></a></li><!--运动名称,运动悬赏价值,运动简介,操作:查看详情-->
         <li><a href="#"><i class="icon icon-fullscreen"></i> <span>饮食信息</span></a></li><!--饮食名称,饮食悬赏金额,饮食简介,操作:查看详情,查看图片-->
