@@ -2,16 +2,16 @@
 <html lang="en">
 <head>
     <title>饮食信息管理</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/bootstrap-responsive.min.css" />
-    <link rel="stylesheet" href="css/uniform.css" />
-    <link rel="stylesheet" href="css/select2.css" />
-    <link rel="stylesheet" href="css/matrix-style.css" />
-    <link rel="stylesheet" href="css/matrix-media.css" />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/bootstrap-responsive.min.css"/>
+    <link rel="stylesheet" href="css/uniform.css"/>
+    <link rel="stylesheet" href="css/select2.css"/>
+    <link rel="stylesheet" href="css/matrix-style.css"/>
+    <link rel="stylesheet" href="css/matrix-media.css"/>
     <link rel="stylesheet" href="css/common.css"/>
-    <link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet"/>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
 </head>
 <body>
@@ -32,7 +32,8 @@ include "header.php";
                     <div class="widget-content">
                         <div class="btn-group">
                             <button class="btn">查看饮食信息</button>
-                            <button data-toggle="dropdown" class="btn dropdown-toggle"><span class="caret"></span></button>
+                            <button data-toggle="dropdown" class="btn dropdown-toggle"><span class="caret"></span>
+                            </button>
                             <ul class="dropdown-menu">
                                 <li><a href="#">查看饮食信息</a></li>
                                 <li><a href="dietInfo-add.php">添加饮食信息</a></li>
@@ -41,7 +42,7 @@ include "header.php";
                     </div>
                 </div>
                 <div class="widget-box">
-                    <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+                    <div class="widget-title"><span class="icon"><i class="icon-th"></i></span>
                         <h5>饮食信息</h5>
                     </div>
                     <div class="widget-content nopadding">
@@ -58,17 +59,25 @@ include "header.php";
                             </tr>
                             </thead>
                             <tbody>
-                            <tr class="gradeA">
-                                <td>**</td>
-                                <td>**</td>
-                                <td>***</td>
-                                <td>***</td>
-                                <td>***</td>
-                                <td>
-                                    <a href="petInfo-edit.php" class="btn btn-success btn-mini"  data-original-title="编辑信息">编辑</a>
-                                    <a href="#" class="btn btn-success btn-mini"  data-original-title="删除信息">删除</a><!--删除做成ajax请求-->
-                                </td>
-                            </tr>
+                            <?php
+                            require_once("mysqlConfigure.php");
+                            $result1 = mysqli_query($conn, "select * from diet");
+                            while ($row1 = mysqli_fetch_array($result1)) {
+                                echo '
+                                <tr class="gradeA">
+                                    <td>' . $row1['dName'] . '</td>
+                                    <td>' . $row1['dValue'] . '</td>
+                                    <td>' . $row1['dDesc'] . '</td>
+                                    <td>' . $row1['dDetail'] . '</td>
+                                    <td class="span2"><image src = ' . $row1[dPath] . '></td>
+                                    <td>
+                                        <a href="petInfo-edit.php?pId=' . $row1['dId'] . '" class="btn btn-success btn-mini"  data-original-title="编辑信息">编辑</a>
+                                        <a href="#" class="btn btn-success btn-mini"   data-id="' . $row1['dId'] . '"   data-original-title="删除信息">删除</a><!--删除做成ajax请求-->
+                                    </td>
+                                </tr>
+                                ';
+                            }
+                            ?>
                             </tbody>
                         </table>
                     </div>

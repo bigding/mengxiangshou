@@ -58,17 +58,25 @@ include "header.php";
                             </tr>
                             </thead>
                             <tbody>
-                            <tr class="gradeA">
-                                <td>**</td>
-                                <td>**</td>
-                                <td>**</td>
-                                <td>***</td>
-                                <td>***</td>
+                            <?php
+                            require_once ("mysqlConfigure.php");
+                            $result1 = mysqli_query($conn,"select * from clothing");
+                            while($row1 = mysqli_fetch_array($result1)){
+                                echo '
+                                <tr class="gradeA">
+                                <td>'.$row1['cName'].'</td>
+                                <td>'.$row1['cValue'].'</td>
+                                <td>//二级查询</td>
+                                <td>'.$row1['cDesc'].'</td>
+                                <td class="span2"><image src = '.$row1[cPath].'></td>
                                 <td>
-                                    <a href="clothInfo-edit.php" class="btn btn-success btn-mini" data-original-title="编辑信息">编辑</a>
-                                    <a href="#" class="btn btn-success btn-mini"  data-original-title="删除信息">删除</a><!--删除做成ajax请求-->
+                                    <a href="clothInfo-edit.php?cId='.$row1['cId'].'"  class="btn btn-success btn-mini" data-original-title="编辑信息">编辑</a>
+                                    <a href="#" class="btn btn-success btn-mini" data-id="'.$row1['cId'].'"   data-original-title="删除信息">删除</a><!--删除做成ajax请求-->
                                 </td>
                             </tr>
+                                ';
+                            }
+                            ?>
                             </tbody>
                         </table>
                     </div>

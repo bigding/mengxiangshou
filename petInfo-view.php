@@ -59,18 +59,27 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr class="gradeA">
-                                <td>**</td>
-                                <td>**</td>
-                                <td>***</td>
-                                <td>***</td>
-                                <td>***</td>
-                                <td>***</td>
+                            <?php
+                            require_once ("mysqlConfigure.php");
+                            $result1 = mysqli_query($conn,"select * from pet");
+                            while($row1 = mysqli_fetch_array($result1)){
+                                echo '
+                                <tr class="gradeA">
+                                <td>'.$row1['pName'].'</td>
+                                <td>'.$row1['pType'].'</td>
+                                <td>'.$row1['pValue'].'</td>
+                                <td>'.$row1['pDesc'].'</td>
+                                <td>'.$row1['pDetail'].'</td> 
+                                <td class="span2"><image src = '.$row1[pPath].'></td>
                                 <td>
-                                     <a href="petInfo-edit.php" class="btn btn-success btn-mini"  data-original-title="编辑信息">编辑</a>
-                                    <a href="#" class="btn btn-success btn-mini"  data-original-title="删除信息">删除</a><!--删除做成ajax请求-->
+                                     <a href="petInfo-edit.php?pId='.$row1['pId'].'" class="btn btn-success btn-mini"  data-original-title="编辑信息">编辑</a>
+                                    <a href="#" class="btn btn-success btn-mini" data-id="'.$row1['pId'].'"  data-original-title="删除信息">删除</a><!--删除做成ajax请求-->
                                 </td>
                             </tr>
+                                ';
+                            }
+                            ?>
+
                             </tbody>
                         </table>
                     </div>
