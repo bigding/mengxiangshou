@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>读物信息管理</title>
+    <title>服装信息管理</title>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
@@ -21,8 +21,8 @@ include "header.php";
 <div id="content">
     <div id="content-header">
         <div id="breadcrumb"><a href="userInfo-view.php" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>
-                读物信息</a></div>
-        <h1>读物信息</h1>
+                服装信息</a></div>
+        <h1>服装信息</h1>
     </div>
     <div class="container-fluid">
         <hr>
@@ -31,6 +31,7 @@ include "header.php";
                 <?php
                 $name = trim($_POST['name']);
                 $value = trim($_POST['value']);
+                $type = trim($_POST['type']);
                 $desc = trim($_POST['desc']);
                 $detail = trim($_POST['detail']);
                 $path;
@@ -47,7 +48,7 @@ include "header.php";
                 }
 
                 $image = explode("/", $_FILES["picture"]["type"]);
-                //                print_r($image);
+                //              print_r($image);
                 if ($image[0] != 'image') {
                     $notice += "您为选择图片,请重新上传<br/>";
                 }
@@ -76,12 +77,14 @@ include "header.php";
                 if ($notice != "") {
                     echo $notice;
                 } else {
-                    $sql5 = "SELECT count(*) FROM mengxiangshou.book where bName='$name'";
+                    $sql5 = "SELECT count(*) num FROM mengxiangshou.pet where pName='$name'";
                     $result5 = mysqli_query($conn, $sql5);
                     $row5 = mysqli_fetch_row($result5);
                     if ($row5[0] > 0) {
-                        echo '存在同名的读物,请重新输入信息';
-                    } else {
+                        echo '存在同名的服装,请重新输入信息';
+                    }
+                    else {
+
                         /*验证图片的MD5,如果已经存在同样的图片,直接写入路径,如果不存在,就存储了再写入*/
                         if (!$file_exist) {  // 当图片不存在时,重新命名图片并存入磁盘,再将路径写入数据库
                             move_uploaded_file($_FILES["picture"]["tmp_name"],
@@ -101,8 +104,8 @@ include "header.php";
                         }
 
 
-                        $sql2 = "insert into book (bName,bValue,bDesc,bDetail,bPath)
-                      values ('$name','$value','$desc','$detail','$path')";
+                        $sql2 = "insert into pet (pName,pValue,pType,pDesc,pDetail,pPath)
+                      values ('$name','$value','$type','$desc','$detail','$path')";
 //                    echo $sql2."<br/>";
                         $result2 = mysqli_query($conn, $sql2);
                         if (mysqli_affected_rows($conn) == 1) {

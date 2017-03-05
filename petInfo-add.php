@@ -46,45 +46,45 @@
                         <h5>信息录入框</h5>
                     </div>
                     <div class="widget-content nopadding">
-                        <form action="#" method="get" class="form-horizontal">
+                        <form action="petInfo-add-operate.php" method="post" class="form-horizontal" enctype="multipart/form-data">
                             <div class="control-group">
                                 <label class="control-label">名称 :</label>
                                 <div class="controls">
-                                    <input type="text" class="span11" placeholder="名称:##"/>
+                                    <input type="text" class="span11" name="name" placeholder="名称:##"/>
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label">宠物类别</label>
                                 <div class="controls">
-                                    <select >
-                                        <option>类别一</option>
-                                        <option>类别二</option>
-                                        <option>类别三</option>
+                                    <select name="type">
+                                        <option value="0">类别一</option>
+                                        <option value="1">类别二</option>
+                                        <option value="2">类别三</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label">宠物价值 :</label>
                                 <div class="controls">
-                                    <input type="password"  class="span11" placeholder="电宠物:###"/>
+                                    <input type="text" name="value" class="span11" placeholder="宠物:###"/>
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label">宠物简介 :</label>
                                 <div class="controls">
-                                    <input type="text" class="span11"/>
+                                    <input type="text" name="desc" class="span11"/>
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label">宠物详情</label>
                                 <div class="controls">
-                                    <textarea class="span11"></textarea>
+                                    <textarea class="span11" name="detail"></textarea>
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label">描述图片</label>
                                 <div class="controls">
-                                    <input type="file" />
+                                    <input type="file" name="picture"/>
                                 </div>
                             </div>
                             <div class="form-actions">
