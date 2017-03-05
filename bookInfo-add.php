@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>宠物信息管理</title>
+    <title>读物信息管理</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/bootstrap.min.css" />
@@ -21,8 +21,8 @@ include "header.php";
 <div id="content">
     <div id="content-header">
         <div id="breadcrumb"><a href="userInfo-view.php" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>
-                宠物信息</a></div>
-        <h1>宠物信息</h1>
+                读物信息</a></div>
+        <h1>读物信息</h1>
     </div>
     <div class="container-fluid">
         <hr>
@@ -31,11 +31,11 @@ include "header.php";
                 <div class="widget-box">
                     <div class="widget-content">
                         <div class="btn-group">
-                            <button class="btn">添加服装信息</button>
+                            <button class="btn">查看读物信息</button>
                             <button data-toggle="dropdown" class="btn dropdown-toggle"><span class="caret"></span></button>
                             <ul class="dropdown-menu">
-                                <li><a href="petInfo-View.php">查看服装信息</a></li>
-                                <li><a href="#">添加服装信息</a></li>
+                                <li><a href="petInfo-View.php">查看读物信息</a></li>
+                                <li><a href="#">添加读物信息</a></li>
                             </ul>
                         </div>
                     </div>
@@ -46,45 +46,35 @@ include "header.php";
                         <h5>信息录入框</h5>
                     </div>
                     <div class="widget-content nopadding">
-                        <form action="#" method="get" class="form-horizontal">
+                        <form action="bookInfo-add-operate.php" method="post" enctype="multipart/form-data" class="form-horizontal">
                             <div class="control-group">
                                 <label class="control-label">名称 :</label>
                                 <div class="controls">
-                                    <input type="text" class="span11" placeholder="名称:##"/>
+                                    <input type="text" class="span11" name="name" placeholder="名称:##"/>
                                 </div>
                             </div>
                             <div class="control-group">
-                                <label class="control-label">服装价值 :</label>
+                                <label class="control-label">读物价值 :</label>
                                 <div class="controls">
-                                    <input type="password"  class="span11" placeholder="服装价值:###"/>
+                                    <input type="text"  class="span11" name="value" placeholder="服装价值:###"/>
                                 </div>
                             </div>
                             <div class="control-group">
-                                <label class="control-label">所属宠物</label>
+                                <label class="control-label">读物简介 :</label>
                                 <div class="controls">
-                                    <select >
-                                        <option>类别一</option>
-                                        <option>类别二</option>
-                                        <option>类别三</option>
-                                    </select>
+                                    <input type="text" name="desc" class="span11"/>
                                 </div>
                             </div>
                             <div class="control-group">
-                                <label class="control-label">服装简介 :</label>
+                                <label class="control-label">读物详情</label>
                                 <div class="controls">
-                                    <input type="text" class="span11"/>
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                <label class="control-label">服装详情</label>
-                                <div class="controls">
-                                    <textarea class="span11"></textarea>
+                                    <textarea class="span11" name="detail"></textarea>
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label">描述图片</label>
                                 <div class="controls">
-                                    <input type="file" />
+                                    <input type="file" name="picture"/>
                                 </div>
                             </div>
                             <div class="form-actions">
