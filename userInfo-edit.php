@@ -34,64 +34,99 @@
                     </div>
                     <!--姓名,密码,电话号码,邮件地址,身高,体重,性别,生日,拥有宠物,金币数量,操作:查看具体的宠物和拥有的服装类型,签名还有具体运动完成情况,历史体重,日常记录-->
                     <div class="widget-content nopadding">
-                        <form action="#" method="get" class="form-horizontal">
-                            <div class="control-group">
-                                <label class="control-label">姓名 :</label>
-                                <div class="controls">
-                                    <input type="text" class="span11" placeholder="姓名:##"/>
+                        <form action="userInfo-edit-operate.php" method="post" class="form-horizontal">
+                        <?php
+                        $userId = trim($_GET['userId']);
+
+                        include 'mysqlConfigure.php';
+                        $sql1 = "select * from user where userId='$userId'";
+                        $result1 = mysqli_query($conn,$sql1);
+                        if(!$result1){
+                            echo "查询数据库出错";
+                            echo mysqli_error($conn);
+                        }
+                        else{
+                            $row1 = mysqli_fetch_array($result1);
+                            echo "
+                             <div class='control-group'>
+                                <label class='control-label'>姓名 :</label>
+                                <div class='controls'>
+                                    <input type='text' class='span11' name='name' placeholder='".$row1['name']."'/>
                                 </div>
                             </div>
-                            <div class="control-group">
-                                <label class="control-label">密码 :</label>
-                                <div class="controls">
-                                    <input type="text" class="span11" placeholder="密码:########"/>
+                            <div class='control-group'>
+                                <label class='control-label'>密码 :</label>
+                                <div class='controls'>
+                                    <input type='text' class='span11' name='password' placeholder='".$row1['password']."'/>
                                 </div>
                             </div>
-                            <div class="control-group">
-                                <label class="control-label">电话号码 :</label>
-                                <div class="controls">
-                                    <input type="password"  class="span11" placeholder="电话号码:### #### ####"/>
+                            <div class='control-group'>
+                                <label class='control-label'>电话号码 :</label>
+                                <div class='controls'>
+                                    <input type='text'  class='span11' name='tell' placeholder='".$row1['tell']."'/>
                                 </div>
                             </div>
-                            <div class="control-group">
-                                <label class="control-label">邮件地址 :</label>
-                                <div class="controls">
-                                    <input type="text" class="span11"/>
+                            <div class='control-group'>
+                                <label class='control-label'>邮件地址 :</label>
+                                <div class='controls'>
+                                    <input type='text' class='span11' name='mail' placeholder='".$row1['mail']."'/>
                                 </div>
                             </div>
-                            <div class="control-group">
-                                <label class="control-label">身高 :</label>
-                                <div class="controls">
-                                    <input type="text" class="span11"/>
+                            <div class='control-group'>
+                                <label class='control-label'>身高 :</label>
+                                <div class='controls'>
+                                    <input type='text' class='span11' name='height' placeholder='".$row1['height']."'/>
                                 </div>
                             </div>
-                            <div class="control-group">
-                                <label class="control-label">体重 :</label>
-                                <div class="controls">
-                                    <input type="text" class="span11"/>
+                            <div class='control-group'>
+                                <label class='control-label'>体重 :</label>
+                                <div class='controls'>
+                                    <input type='text' class='span11' name='weight' placeholder='".$row1['weight']."'/>
+                                </div>
+                            </div>                           <!--0为女生 1为男生*/-->
+                            <div class='control-group'>
+                                <label class='control-label'>性别 :</label>
+                                <div class='controls'>
+                                    <select name='sex' >
+                            ";
+
+                            if($row1[sex] == 0){
+                                echo "  
+                                        <option value='0' selected='selected'>女</option>
+                                        <option value='1'>男</option>
+                            ";
+                            }
+                            else{
+                                echo "  
+                                        <option value='0'>女</option>
+                                        <option value='1'selected='selected'>男</option>
+                            ";
+                            }
+
+                            echo "  
+                                    </select>
                                 </div>
                             </div>
-                            <div class="control-group">
-                                <label class="control-label">性别 :</label>
-                                <div class="controls">
-                                    <input type="text" class="span11"/>
+                            <div class='control-group'>
+                                <label class='control-label'>生日 :</label>
+                                <div class='controls'>
+                                    <input type='text' class='span11' name='birthday' placeholder='".$row1['birthday']."'/>
                                 </div>
                             </div>
-                            <div class="control-group">
-                                <label class="control-label">生日 :</label>
-                                <div class="controls">
-                                    <input type="text" class="span11"/>
+                            <div class='control-group'>
+                                <label class='control-label'>金币数量 :</label>
+                                <div class='controls'>
+                                    <input type='text' class='span11' name='money' placeholder='".$row1['money']."'/>
                                 </div>
                             </div>
-                            <div class="control-group">
-                                <label class="control-label">金币数量 :</label>
-                                <div class="controls">
-                                    <input type="text" class="span11"/>
-                                </div>
+                              <input type='text'  name='userId' value='$userId' class='hidden'/>
+                            <div class='form-actions'>
+                                <button type='submit' class='btn btn-success'>提交</button>
                             </div>
-                            <div class="form-actions">
-                                <button type="submit" class="btn btn-success">提交</button>
-                            </div>
+                            ";
+                        }
+                        ?>
+
                         </form>
                     </div>
                 </div>
