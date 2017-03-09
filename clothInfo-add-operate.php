@@ -85,19 +85,28 @@ include "header.php";
                     } else {
 
                         /*验证图片的MD5,如果已经存在同样的图片,直接写入路径,如果不存在,就存储了再写入*/
+                        echo $file_exist;
+                        echo "<br/>";
                         if (!$file_exist) {  // 当图片不存在时,重新命名图片并存入磁盘,再将路径写入数据库
-                            move_uploaded_file($_FILES["picture"]["tmp_name"],
-                                "images/book/" . $_FILES["picture"]["name"]);
 
-                            $sql4 = "select  COUNT(*) num from images_md5";
+                            $sql4 = "SELECT id+1 num FROM mengxiangshou.images_md5 WHERE id = (SELECT MAX(id) FROM images_md5)";
                             $result4 = mysqli_query($conn, $sql4);
                             $row4 = mysqli_fetch_array($result4);
                             $file_name = $row4["num"] . '.' . $image[1];
+                            $path = 'images/cloth/' . $file_name;
 
-                            $path = 'images/book/' . $file_name;
+                            echo $_FILES["picture"]["tmp_name"]."<br/>";
+                            if(move_uploaded_file($_FILES["picture"]["tmp_name"],$path)){
+                                echo "上传图片成功";
+                            }
+                            else{
+                                echo "上传图片失败";
+                                return;
+                            }
                             /*将MD5值写入数据库*/
                             $sql3 = "insert into images_md5 (image_md5,image_path)
                               VALUES ('$md5num','$path')";
+                            echo $sql3."<br/>";
                             $result3 = mysqli_query($conn, $sql3);
 
                         }
@@ -105,6 +114,7 @@ include "header.php";
 
                         $sql2 = "insert into clothing (cName,cValue,cDesc,cDetail,cPath)
                           values ('$name','$value','$desc','$detail','$path')";
+                        echo $sql2."<br/>";
                         $result2 = mysqli_query($conn, $sql2);
                         if (mysqli_affected_rows($conn) == 1) {
                             $sql6 = "select cId from clothing where cName='$name'";

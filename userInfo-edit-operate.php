@@ -47,7 +47,10 @@ include "header.php";
                     $notice = $notice."请输入正确格式的邮件地址<br/>";
                 }
                 if ($birthday!="" && !preg_match('/^((((19|20)\d{2})-(0?(1|[3-9])|1[012])-(0?[1-9]|[12]\d|30))|(((19|20)\d{2})-(0?[13578]|1[02])-31)|(((19|20)\d{2})-0?2-(0?[1-9]|1\d|2[0-8]))|((((19|20)([13579][26]|[2468][048]|0[48]))|(2000))-0?2-29))$/',$birthday)) {
-                    $notice = $notice."请输入正确格式的生日日期";
+                    $notice = $notice."请输入正确格式的生日日期<br/>";
+                }
+                if($height >2.20 || $height < 0.4){
+                    $notice = $notice."请输入正常的身高值<br/>";
                 }
 
                 if($notice != ""){
@@ -71,7 +74,7 @@ include "header.php";
                         }
                         if ($passwd != "" && $passwd != $row1['password']) {
                             if ($sql2 == ""){
-                                $sql2 = "update user set password='$passrd'";
+                                $sql2 = "update user set password='$passwd'";
                             }
                             else
                                 $sql2  = $sql2. ",password='$passwd'";
@@ -118,17 +121,20 @@ include "header.php";
                             else
                                 $sql2  = $sql2. ",money='$money'";
                         }
-
-                        if($sql2 != "")
+                        echo $sql2;
+                        if($sql2 != ""){
                             $sql2  = $sql2. " where userId='$userId'";
-                        $result2=mysqli_query($conn,$sql2);
-                        if($result2){
-                            echo "修改成功";
+                            $result2=mysqli_query($conn,$sql2);
+                            if($result2){
+                                echo "修改成功<br/>";
+                            }
+                            else{
+                                echo "修改失败<br/>";
+                            }
                         }
                         else{
-                            echo "修改失败<br/>";
+                            echo "请至少更新一项信息";
                         }
-
                     }
                 }
                 ?>
