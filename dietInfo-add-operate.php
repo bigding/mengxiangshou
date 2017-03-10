@@ -89,11 +89,12 @@ include "header.php";
                             $row4 = mysqli_fetch_array($result4);
                             $file_name = $row4["num"] . '.' . $image[1];
                             $path = 'images/diet/' . $file_name;
+                            echo $path.'<br/>';
 
                             if(move_uploaded_file($_FILES["picture"]["tmp_name"],$path)){
 
-                            }{
-                                echo"上传图片失败<br/>";
+                            }else{
+                                echo "上传图片失败";
                                 return;
                             }
 
