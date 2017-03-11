@@ -53,16 +53,16 @@
                                     <input type="text" class="span11" name="name" placeholder="名称:##"/>
                                 </div>
                             </div>
-                            <div class="control-group">
-                                <label class="control-label">宠物类别</label>
-                                <div class="controls">
-                                    <select name="type">
-                                        <option value="0">类别一</option>
-                                        <option value="1">类别二</option>
-                                        <option value="2">类别三</option>
-                                    </select>
-                                </div>
-                            </div>
+<!--                            <div class="control-group">-->
+<!--                                <label class="control-label">宠物类别</label>-->
+<!--                                <div class="controls">-->
+<!--                                    <select name="type">-->
+<!--                                        <option value="0">类别一</option>-->
+<!--                                        <option value="1">类别二</option>-->
+<!--                                        <option value="2">类别三</option>-->
+<!--                                    </select>-->
+<!--                                </div>-->
+<!--                            </div>-->
                             <div class="control-group">
                                 <label class="control-label">宠物价值 :</label>
                                 <div class="controls">

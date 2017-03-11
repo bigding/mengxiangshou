@@ -34,40 +34,64 @@ include "header.php";
                         <h5>信息录入框</h5>
                     </div>
                     <div class="widget-content nopadding">
-                        <form action="#" method="get" class="form-horizontal">
-                            <div class="control-group">
-                                <label class="control-label">饮食名称 :</label>
-                                <div class="controls">
-                                    <input type="text" class="span11" placeholder="名称:##"/>
+                        <form action="dietInfo-edit-operate.php" method="post" enctype="multipart/form-data" class="form-horizontal">
+                            <?php
+                            $dId = $_GET['dId'];
+
+                            include_once 'mysqlConfigure.php';
+                            $sql1 = "select * from diet where dId = '$dId'";
+                            $result1 = mysqli_query($conn,$sql1);
+                            if(!$result1){
+                                echo "数据库查询出错";
+                            }
+                            else{
+                                $row1 = mysqli_fetch_array($result1);
+                                
+                                echo "
+                                <div class='control-group'>
+                                    <label class='control-label'>饮食名称 :</label>
+                                    <div class='controls'>
+                                        <input type='text' class='span11' name='dname' placeholder='".$row1['dName']."'/>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="control-group">
-                                <label class="control-label">饮食悬赏金额 :</label>
-                                <div class="controls">
-                                    <input type="password"  class="span11" placeholder="服装价值:###"/>
+                                <div class='control-group'>
+                                    <label class='control-label'>饮食悬赏金额 :</label>
+                                    <div class='controls'>
+                                        <input type='text'  class='span11' name='dvalue' placeholder='".$row1['dValue']."'/>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="control-group">
-                                <label class="control-label">饮食简介 :</label>
-                                <div class="controls">
-                                    <input type="text" class="span11"/>
+                                <div class='control-group'>
+                                    <label class='control-label'>饮食简介 :</label>
+                                    <div class='controls'>
+                                        <input type='text' class='span11' name='ddesc' placeholder='".$row1['dDesc']."'/>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="control-group">
-                                <label class="control-label">饮食详情</label>
-                                <div class="controls">
-                                    <textarea class="span11"></textarea>
+                                <div class='control-group'>
+                                    <label class='control-label'>饮食详情</label>
+                                    <div class='controls'>
+                                        <textarea class='span11' name='ddetail' placeholder='".$row1['dDetail']."'></textarea>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="control-group">
-                                <label class="control-label">描述图片</label>
-                                <div class="controls">
-                                    <input type="file" />
+                                <div class='control-group'>
+                                    <label class='control-label'>现存图片</label>
+                                    <div class='controls span4'>
+                                        <image src='" . $row1['dPath'] . "'/>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-actions">
-                                <button type="submit" class="btn btn-success">提交</button>
-                            </div>
+                                <div class='control-group'>
+                                    <label class='control-label'>更改图片</label>
+                                    <div class='controls'>
+                                        <input type='file' name='picture'/>
+                                    </div>
+                                </div>
+                                  <input type='text'  name='dId' value='$dId' class='hidden'/>
+                                <div class='form-actions'>
+                                    <button type='submit' class='btn btn-success'>提交</button>
+                                </div>
+                                ";
+                            }
+                            ?>
+                            
                         </form>
                     </div>
                 </div>

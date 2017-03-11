@@ -34,50 +34,83 @@ include "header.php";
                         <h5>信息录入框</h5>
                     </div>
                     <div class="widget-content nopadding">
-                        <form action="#" method="get" class="form-horizontal">
-                            <div class="control-group">
-                                <label class="control-label">名称 :</label>
-                                <div class="controls">
-                                    <input type="text" class="span11" placeholder="名称:##"/>
+                        <form action="clothInfo-edit-operate.php" method="post" enctype="multipart/form-data" class="form-horizontal">
+                            <?php
+                            $cId=$_GET['cId'];
+                            $cType = ['类别一', '类别二', '类别三'];
+
+                            include_once 'mysqlConfigure.php';
+                            $sql1 = "select * from clothing where cId = '$cId'";
+                            $result1 = mysqli_query($conn,$sql1);
+                            if(!$result1){
+                                echo '数据库查询出错';
+                            }
+                            else{
+                                $row1 = mysqli_fetch_array($result1);
+
+                                echo "
+                                <div class='control-group'>
+                                    <label class='control-label'>名称 :</label>
+                                    <div class='controls'>
+                                        <input type='text' class='span11' name='cname' placeholder='".$row1['cName']."'/>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="control-group">
-                                <label class="control-label">服装价值 :</label>
-                                <div class="controls">
-                                    <input type="password"  class="span11" placeholder="服装价值:###"/>
+                                <div class='control-group'>
+                                    <label class='control-label'>服装价值 :</label>
+                                    <div class='controls'>
+                                        <input type='text'  class='span11' name='cvalue' placeholder='".$row1['cValue']."'/>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="control-group">
-                                <label class="control-label">所属宠物</label>
-                                <div class="controls">
-                                    <select >
-                                        <option>类别一</option>
-                                        <option>类别二</option>
-                                        <option>类别三</option>
-                                    </select>
+                                <div class='control-group'>
+                                    <label class='control-label'>所属宠物</label>
+                                    <div class='controls'>
+                                        <select  name='belong'>";
+
+                                for($i = 0;$i < count($cType);$i++){
+                                    if($i == $row1['pType']){
+                                        echo "<option selected>".$cType[$i]."</option>";
+                                    }
+                                    else{
+                                        echo "<option >".$cType[$i]."</option>";
+                                    }
+                                }
+
+                                echo "
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="control-group">
-                                <label class="control-label">服装简介 :</label>
-                                <div class="controls">
-                                    <input type="text" class="span11"/>
+                                <div class='control-group'>
+                                    <label class='control-label'>服装简介 :</label>
+                                    <div class='controls'>
+                                        <input type='text' class='span11' name='cdesc' placeholder='".$row1['cDesc']."'/>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="control-group">
-                                <label class="control-label">服装详情</label>
-                                <div class="controls">
-                                    <textarea class="span11"></textarea>
+                                <div class='control-group'>
+                                    <label class='control-label'>服装详情</label>
+                                    <div class='controls'>
+                                        <textarea class='span11' name='cdetail' placeholder='".$row1['cDetail']."'></textarea>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="control-group">
-                                <label class="control-label">描述图片</label>
-                                <div class="controls">
-                                    <input type="file" />
+                                <div class='control-group'>
+                                    <label class='control-label'>现存图片</label>
+                                    <div class='controls span4'>
+                                        <image src='" . $row1['cPath'] . "'/>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-actions">
-                                <button type="submit" class="btn btn-success">提交</button>
-                            </div>
+                                <div class='control-group'>
+                                    <label class='control-label'>更改图片</label>
+                                    <div class='controls'>
+                                        <input type='file' name='picture'/>
+                                    </div>
+                                </div>
+                                  <input type='text'  name='cId' value='$cId' class='hidden'/>
+                                <div class='form-actions'>
+                                    <button type='submit' class='btn btn-success'>提交</button>
+                                </div>
+                                ";
+                            }
+                            ?>
+                            
                         </form>
                     </div>
                 </div>

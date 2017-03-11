@@ -31,7 +31,7 @@ include "header.php";
                 <?php
                 $name = trim($_POST['name']);
                 $value = trim($_POST['value']);
-                $type = trim($_POST['type']);
+//                $type = trim($_POST['type']);
                 $desc = trim($_POST['desc']);
                 $detail = trim($_POST['detail']);
                 $path;
@@ -89,8 +89,13 @@ include "header.php";
                         if (!$file_exist) {  // 当图片不存在时,重新命名图片并存入磁盘,再将路径写入数据库
                             $sql4 = "SELECT id+1 num FROM mengxiangshou.images_md5 WHERE id = (SELECT MAX(id) FROM images_md5)";
                             $result4 = mysqli_query($conn, $sql4);
-                            $row4 = mysqli_fetch_array($result4);
-                            $file_name = $row4["num"] . '.' . $image[1];
+                            if(mysqli_num_rows($result4) == 0){
+                                $file_name = '0.' . $image[1];
+                            }
+                            else{
+                                $row4 = mysqli_fetch_array($result4);
+                                $file_name = $row4["num"] . '.' . $image[1];
+                            }
                             $path = 'images/pet/' . $file_name;
 
                             if(move_uploaded_file($_FILES["picture"]["tmp_name"],$path)){
@@ -109,7 +114,7 @@ include "header.php";
 
 
                         $sql2 = "insert into pet (pName,pValue,pType,pDesc,pDetail,pPath)
-                      values ('$name','$value','$type','$desc','$detail','$path')";
+                      values ('$name','$value','0','$desc','$detail','$path')";
 //                    echo $sql2."<br/>";
                         $result2 = mysqli_query($conn, $sql2);
                         if (mysqli_affected_rows($conn) == 1) {

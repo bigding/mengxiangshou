@@ -29,11 +29,11 @@ include "header.php";
         <div class="row-fluid">
             <div class="span12">
                 <?php
-                $name = trim($_POST['name']);
-                $value = trim($_POST['value']);
+                $name = trim($_POST['cname']);
+                $value = trim($_POST['cvalue']);
                 $belong = trim($_POST['belong']);
-                $desc = trim($_POST['desc']);
-                $detail = trim($_POST['detail']);
+                $desc = trim($_POST['cdesc']);
+                $detail = trim($_POST['cdetail']);
                 $path;
                 $file_name;
 
@@ -59,7 +59,7 @@ include "header.php";
                 $sql1 = "select * from images_md5 where image_md5='$md5num'";
                 $result1 = mysqli_query($conn, $sql1);
                 if (!$result1) {
-                    echo mysqli_error($conn);
+                    echo "查询出错";
                 } else {
                     $row_num = mysqli_num_rows($result1);
                     if ($row_num == 1) {
@@ -85,8 +85,6 @@ include "header.php";
                     } else {
 
                         /*验证图片的MD5,如果已经存在同样的图片,直接写入路径,如果不存在,就存储了再写入*/
-                        echo $file_exist;
-                        echo "<br/>";
                         if (!$file_exist) {  // 当图片不存在时,重新命名图片并存入磁盘,再将路径写入数据库
 
                             $sql4 = "SELECT id+1 num FROM mengxiangshou.images_md5 WHERE id = (SELECT MAX(id) FROM images_md5)";
@@ -106,7 +104,6 @@ include "header.php";
                             /*将MD5值写入数据库*/
                             $sql3 = "insert into images_md5 (image_md5,image_path)
                               VALUES ('$md5num','$path')";
-                            echo $sql3."<br/>";
                             $result3 = mysqli_query($conn, $sql3);
 
                         }
@@ -114,7 +111,6 @@ include "header.php";
 
                         $sql2 = "insert into clothing (cName,cValue,cDesc,cDetail,cPath)
                           values ('$name','$value','$desc','$detail','$path')";
-                        echo $sql2."<br/>";
                         $result2 = mysqli_query($conn, $sql2);
                         if (mysqli_affected_rows($conn) == 1) {
                             $sql6 = "select cId from clothing where cName='$name'";
@@ -133,7 +129,8 @@ include "header.php";
                                 echo "所属宠物出错,请重新输入信息";
                             }
                         } else {
-                            echo mysqli_error($conn);
+                            echo '操作出错';
+//                            echo mysqli_error($conn);
                         }
                     }
                 }

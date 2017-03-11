@@ -86,8 +86,13 @@ include "header.php";
                         if (!$file_exist) {  // 当图片不存在时,重新命名图片并存入磁盘,再将路径写入数据库
                             $sql4 = "SELECT id+1 num FROM mengxiangshou.images_md5 WHERE id = (SELECT MAX(id) FROM images_md5)";
                             $result4 = mysqli_query($conn, $sql4);
-                            $row4 = mysqli_fetch_array($result4);
-                            $file_name = $row4["num"] . '.' . $image[1];
+                            if(mysqli_num_rows($result4) == 0){
+                                $file_name = '0.' . $image[1];
+                            }
+                            else{
+                                $row4 = mysqli_fetch_array($result4);
+                                $file_name = $row4["num"] . '.' . $image[1];
+                            }
                             $path = 'images/diet/' . $file_name;
                             echo $path.'<br/>';
 

@@ -71,7 +71,7 @@ include "header.php";
                                 <td>' . $row1['bDetail'] . '</td>
                                 <td class="span2"><image src = ' . $row1[bPath] . '></td>
                                 <td>
-                                    <a href="clothInfo-edit.php?pId=' . $row1['bId'] . '"  class="btn btn-success btn-mini" data-original-title="编辑信息">编辑</a>
+                                    <a href="bookInfo-edit.php?bId=' . $row1['bId'] . '"  class="btn btn-success btn-mini" data-original-title="编辑信息">编辑</a>
                                     <a href="#" class="btn btn-success btn-mini"   data-id="' . $row1['bId'] . '"  data-original-title="删除信息">删除</a><!--删除做成ajax请求-->
                                 </td>
                             </tr>

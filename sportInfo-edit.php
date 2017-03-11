@@ -34,7 +34,7 @@ include "header.php";
                         <h5>信息录入框</h5>
                     </div>
                     <div class="widget-content nopadding">
-                        <form action="sportInfo-edit-operate.php" method="post" class="form-horizontal">
+                        <form action="sportInfo-edit-operate.php" method="post" enctype="multipart/form-data" class="form-horizontal">
                             <?php
                             $sId = $_GET['sId'];
 

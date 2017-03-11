@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>运动信息管理</title>
+    <title>饮食信息管理</title>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
@@ -21,19 +21,19 @@ include "header.php";
 <div id="content">
     <div id="content-header">
         <div id="breadcrumb"><a href="userInfo-view.php" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>
-                运动信息</a></div>
-        <h1>运动信息</h1>
+                饮食信息</a></div>
+        <h1>饮食信息</h1>
     </div>
     <div class="container-fluid">
         <hr>
         <div class="row-fluid">
             <div class="span12">
                 <?php
-                $sId = trim($_POST['sId']);
-                $name = trim($_POST['sname']);
-                $value = trim($_POST['svalue']);
-                $desc = trim($_POST['sdesc']);
-                $detail = trim($_POST['sdetail']);
+                $dId = trim($_POST['dId']);
+                $name = trim($_POST['dname']);
+                $value = trim($_POST['dvalue']);
+                $desc = trim($_POST['ddesc']);
+                $detail = trim($_POST['ddetail']);
                 $path;
 
                 /*根据数据库和用户输入的信息构建sql语句*/
@@ -55,30 +55,30 @@ include "header.php";
                     echo $notice;
                 } else {
                     /*生成sql语句*/
-                    $sql1 = "select * from sports where sId='$sId'";
+                    $sql1 = "select * from diet where dId='$dId'";
                     $result1 = mysqli_query($conn, $sql1);
                     $row1 = mysqli_fetch_array($result1);
                     $sql2 = "";
-                    if ($name != "" && $name != $row1['sName']) {
-                        $sql2 = "update sports set sName='$name'";
+                    if ($name != "" && $name != $row1['dName']) {
+                        $sql2 = "update diet set dName='$name'";
                     }
-                    if ($value != "" && $value != $row1['sValue']) {
+                    if ($value != "" && $value != $row1['dValue']) {
                         if ($sql2 == "") {
-                            $sql2 = "update sports set sValue='$value'";
+                            $sql2 = "update diet set dValue='$value'";
                         } else
-                            $sql2 = $sql2 . ",sValue='$value'";
+                            $sql2 = $sql2 . ",dValue='$value'";
                     }
-                    if ($desc != "" && $desc != $row1['sDesc']) {
+                    if ($desc != "" && $desc != $row1['dDesc']) {
                         if ($sql2 == "")
-                            $sql2 = "update sports set sDesc='$desc'";
+                            $sql2 = "update diet set dDesc='$desc'";
                         else
-                            $sql2 = $sql2 . ",sDesc='$desc'";
+                            $sql2 = $sql2 . ",dDesc='$desc'";
                     }
-                    if ($detail != "" && $detail != $row1['sDetail']) {
+                    if ($detail != "" && $detail != $row1['dDetail']) {
                         if ($sql2 == "")
-                            $sql2 = "update sports set sDetail='$detail'";
+                            $sql2 = "update diet set dDetail='$detail'";
                         else
-                            $sql2 = $sql2 . ",sDetail='$detail'";
+                            $sql2 = $sql2 . ",dDetail='$detail'";
                     }
                     /*关于图片是否改变的判断,已经相关sql语句的生成*/
                     if (!$_FILES['picture']['error']) {
@@ -114,18 +114,19 @@ include "header.php";
 
                         }
                         if($sql2 == ""){
-                            $sql2 = "update sports set sPath='$path'";
+                            $sql2 = "update diet set dPath='$path'";
                         }else{
-                            $sql2 = $sql2 . ",sPath = '$path'";
+                            $sql2 = $sql2 . ",dPath = '$path'";
                         }
                     }
                     if ($sql2 != "") {
-                        $sql2 = $sql2 . " where sId='$sId'";
+                        $sql2 = $sql2 . " where dId='$dId'";
                         $result2 = mysqli_query($conn, $sql2);
                         if ($result2) {
                             echo "修改成功<br/>";
                         } else {
                             echo "修改失败<br/>";
+                            echo mysqli_error($conn);
                         }
                     } else {
                         echo "请至少更新一项信息";
