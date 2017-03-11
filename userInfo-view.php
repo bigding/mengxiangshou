@@ -58,25 +58,25 @@
                             $result1 = mysqli_query($conn,"SELECT * FROM mengxiangshou.user");
                             while($row1 = mysqli_fetch_array($result1)){
                                 echo '
-                                 <tr class="gradeA">
-                                <td>'.$row1['name'].'</td>
-                                <td>'.$row1['password'].'</td>
-                                <td>'.$row1['tell'].'</td>
-                                <td>'.$row1['mail'].'</td>
-                                <td>'.$row1['height'].'</td>
-                                <td>'.$row1['weight'].'</td>
-                                <td>'.$row1['sex'].'</td>
-                                <td>'.$row1['birthday'].'</td>
-                                <td>'.$row1['money'].'</td>';
-                                /*第二层,查询用户宠物数量,后面做*/
-                                echo '
-                                <td>2//后面完善</td>
-                                <td>
-                                    <a href="userInfo-detail.php?userId='.$row1['userId'].'" class="btn btn-success btn-mini" data-original-title="查看详情">查看</a>
-                                    <a href="userInfo-edit.php?userId='.$row1['userId'].'" class="btn btn-success btn-mini" data-original-title="编辑信息">编辑</a>
-                                    <a href="#" class="btn btn-success btn-mini"  data-id="'.$row1['userId'].'"    data-original-title="删除信息">删除</a><!--删除做成ajax请求-->
-                                </td>
-                            </tr>
+                                <tr class="gradeA">
+                                    <td>'.$row1['name'].'</td>
+                                    <td>'.$row1['password'].'</td>
+                                    <td>'.$row1['tell'].'</td>
+                                    <td>'.$row1['mail'].'</td>
+                                    <td>'.$row1['height'].'</td>
+                                    <td>'.$row1['weight'].'</td>
+                                    <td>'.$row1['sex'].'</td>
+                                    <td>'.$row1['birthday'].'</td>
+                                    <td>'.$row1['money'].'</td>';
+                                    /*第二层,查询用户宠物数量,后面做*/
+                                    echo '
+                                    <td>2//后面完善</td>
+                                    <td>
+                                        <a href="userInfo-detail.php?userId='.$row1['userId'].'" class="btn btn-success btn-mini" data-original-title="查看详情">查看</a>
+                                        <a href="userInfo-edit.php?userId='.$row1['userId'].'" class="btn btn-success btn-mini" data-original-title="编辑信息">编辑</a>
+                                        <a href="javascript:void(0);" class="btn btn-success btn-mini infoDelete"  data-id="'.$row1['userId'].'" data-id="'.$row1['userId'].'" data-sql="user"  data-original-title="删除信息">删除</a><!--删除做成ajax请求-->
+                                    </td>
+                                </tr>
                                 ';
                             }
                             echo mysqli_error($conn);
@@ -102,5 +102,7 @@ include "footer.php";
 <script src="js/jquery.dataTables.min.js"></script>
 <script src="js/matrix.js"></script>
 <script src="js/matrix.tables.js"></script>
+<script src="js/info-view-operate.js"></script>
+
 </body>
 </html>
