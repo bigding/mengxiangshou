@@ -3,7 +3,7 @@ $(function () {
     $(".infoDelete").click(function () {
         $that = $(this);
         $.post("./userInfo-delete.php",{
-            id_type:"userId",
+            id_type:$(this).attr("data-type"),
             sql:$(this).attr("data-sql"),
             id:$(this).attr("data-id")
         },function (data,textStatus) {
