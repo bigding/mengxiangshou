@@ -73,7 +73,7 @@
                                 <td class="span2"><image src = '.$row1[pPath].'></td>
                                 <td>
                                      <a href="petInfo-edit.php?pId='.$row1['pId'].'" class="btn btn-success btn-mini"  data-original-title="编辑信息">编辑</a>
-                                    <a href="#" class="btn btn-success btn-mini" data-id="'.$row1['pId'].'"  data-original-title="删除信息">删除</a><!--删除做成ajax请求-->
+                                    <a href="javascript:void(0);" class="btn btn-success btn-mini infoDelete"   data-id="'.$row1['pId'].'" data-type="pId" data-sql="pet"   data-original-title="删除信息">删除</a><!--删除做成ajax请求-->
                                 </td>
                             </tr>
                                 ';
@@ -100,5 +100,6 @@ include "footer.php";
 <script src="js/jquery.dataTables.min.js"></script>
 <script src="js/matrix.js"></script>
 <script src="js/matrix.tables.js"></script>
+<script src="js/info-view-operate.js"></script>
 </body>
 </html>

@@ -74,7 +74,7 @@
                                     <td>
                                         <a href="userInfo-detail.php?userId='.$row1['userId'].'" class="btn btn-success btn-mini" data-original-title="查看详情">查看</a>
                                         <a href="userInfo-edit.php?userId='.$row1['userId'].'" class="btn btn-success btn-mini" data-original-title="编辑信息">编辑</a>
-                                        <a href="javascript:void(0);" class="btn btn-success btn-mini infoDelete"  data-id="'.$row1['userId'].'" data-id="'.$row1['userId'].'" data-sql="user"  data-original-title="删除信息">删除</a><!--删除做成ajax请求-->
+                                        <a href="javascript:void(0);" class="btn btn-success btn-mini infoDelete"  data-id="'.$row1['userId'].'" data-type="userId" data-sql="user"  data-original-title="删除信息">删除</a><!--删除做成ajax请求-->
                                     </td>
                                 </tr>
                                 ';

@@ -63,7 +63,7 @@ if($idType == "sId"){
     $result1=mysqli_query($conn,$sql1);
     $result2=mysqli_query($conn,$sql2);
     $result3=mysqli_query($conn,$sql3);
-    if($result1 && $result2 ){
+    if($result1 && $result2 && $result3 ){
         echo "1";
     }
     else{
@@ -85,7 +85,7 @@ if($idType == "dId"){
 }
 /*当是读物信息时*/
 if($idType == "bId"){
-    $sql1 = "delete from book where bId='id'";
+    $sql1 = "delete from book where bId='$id'";
     $result1=mysqli_query($conn,$sql1);
     if($result1){
         echo "1";
