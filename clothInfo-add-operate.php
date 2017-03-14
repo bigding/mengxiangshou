@@ -91,14 +91,16 @@ include "header.php";
                             $result4 = mysqli_query($conn, $sql4);
                             $row4 = mysqli_fetch_array($result4);
                             $file_name = $row4["num"] . '.' . $image[1];
-                            $path = 'images/cloth/' . $file_name;
-
-                            echo $_FILES["picture"]["tmp_name"]."<br/>";
+                            $path = 'images/clothing/' . $file_name;
+//                            echo $path."<br/>";
+//
+//                            echo $_FILES["picture"]["tmp_name"]."<br/>";
                             if(move_uploaded_file($_FILES["picture"]["tmp_name"],$path)){
                                 echo "上传图片成功";
                             }
                             else{
                                 echo "上传图片失败";
+//                                echo $_FILES["picture"]["error"];
                                 return;
                             }
                             /*将MD5值写入数据库*/
