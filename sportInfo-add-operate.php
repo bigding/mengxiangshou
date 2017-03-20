@@ -72,6 +72,10 @@ include "header.php";
                     }
                 }
 
+                if ($value != "" && !preg_match('^\d{n}$',$value)) {
+                    $notice = $notice . "请输入数字格式的悬赏值<br/>";
+                }
+
                 /*验证部分的处理完成后判断是否存在错误*/
                 if ($notice != "") {
                     echo $notice;

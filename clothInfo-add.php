@@ -50,35 +50,40 @@ include "header.php";
                             <div class="control-group">
                                 <label class="control-label">服装名称 :</label>
                                 <div class="controls">
-                                    <input type="text" class="span11" name="name" placeholder="名称:##"/>
+                                    <input type="text" class="span11" name="cname" placeholder="名称:##"/>
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label">服装价值 :</label>
                                 <div class="controls">
-                                    <input type="text"  class="span11" name="value" placeholder="服装价值:###"/>
+                                    <input type="text"  class="span11" name="cvalue" placeholder="服装价值:###"/>
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label">所属宠物</label>
                                 <div class="controls">
                                     <select name="belong">
-                                        <option value="1">宠物一</option>
-                                        <option value="2">宠物二</option>
-                                        <option value="3">宠物三</option>
+                                        <?php
+                                        include_once "mysqlConfigure.php";
+                                        $sql1 = "select pId,pName from pet";
+                                        $result1 = mysqli_query($conn,$sql1);
+                                        while($row1 = mysqli_fetch_array($result1)){
+                                            echo '<option value="'.$row1[pId].'">'.$row1[pName].'</option>';
+                                        }
+                                        ?>
                                     </select>
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label">服装简介 :</label>
                                 <div class="controls">
-                                    <input type="text" name="desc" class="span11"/>
+                                    <input type="text" name="cdesc" class="span11"/>
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label">服装详情</label>
                                 <div class="controls">
-                                    <textarea class="span11" name="detail"></textarea>
+                                    <textarea class="span11" name="cdetail"></textarea>
                                 </div>
                             </div>
                             <div class="control-group">

@@ -40,7 +40,7 @@ include "header.php";
                 include "mysqlConfigure.php";
                 $notice = "";
                 /*是否输入的验证*/
-                if ($name == "" && $pvalue == "" && $desc == "" && $detail == "" && $_FILES['picture']['name'] == "") {
+                if ($name == "" && $value == "" && $desc == "" && $detail == "" && $_FILES['picture']['name'] == "") {
                     $notice = $notice . "请至少更新一项信息<br/>";
                 }
                 if (!$_FILES["picture"]["error"]) {
@@ -49,7 +49,9 @@ include "header.php";
                         $notice = $notice . "您未选择图片格式的文件,请重新上传<br/>";
                     }
                 }
-
+                if ($value != "" && !preg_match('/^[0-9]*$/ ',$value)) {
+                    $notice = $notice . "请输入数字格式的悬赏值<br/>";
+                }
 
                 if ($notice != "") {
                     echo $notice;
@@ -62,11 +64,11 @@ include "header.php";
                     if ($name != "" && $name != $row1['pName']) {
                         $sql2 = "update pet set pName='$name'";
                     }
-                    if ($pvalue != "" && $pvalue != $row1['pValue']) {
+                    if ($value != "" && $value != $row1['pValue']) {
                         if ($sql2 == "") {
-                            $sql2 = "update pet set pValue='$pvalue'";
+                            $sql2 = "update pet set pValue='$value'";
                         } else
-                            $sql2 = $sql2 . ",pValue='$pvalue'";
+                            $sql2 = $sql2 . ",pValue='$value'";
                     }
                     if ($desc != "" && $desc != $row1['pDesc']) {
                         if ($sql2 == "")
@@ -128,7 +130,7 @@ include "header.php";
                             echo "修改失败<br/>";
                         }
                     } else {
-                        echo "请至少更新一项信息";
+                        echo "请至少更新一项信息<br/>";
                     }
                 }
                 ?>

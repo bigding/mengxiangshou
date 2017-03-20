@@ -41,22 +41,43 @@ include "header.php";
                 $money = trim($_POST['money']);
                 $userId = trim($_POST['userId']);
 
+
                 /*对用户输入信息的验证部分*/
-                $notice="";
-                if ($mail != "" && !preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/',$mail)) {
-                    $notice = $notice."请输入正确格式的邮件地址<br/>";
+                $notice = "";
+                if ($tell != "" && !preg_match('/^1[34578]\d{9}$/', $tell)) {
+                    $notice = $notice . "请输入正确格式的电话号码<br/>";
                 }
-                if ($birthday!="" && !preg_match('/^((((19|20)\d{2})-(0?(1|[3-9])|1[012])-(0?[1-9]|[12]\d|30))|(((19|20)\d{2})-(0?[13578]|1[02])-31)|(((19|20)\d{2})-0?2-(0?[1-9]|1\d|2[0-8]))|((((19|20)([13579][26]|[2468][048]|0[48]))|(2000))-0?2-29))$/',$birthday)) {
-                    $notice = $notice."请输入正确格式的生日日期<br/>";
+                if ($mail != "" && !preg_match('/^[a-z_0-9.-]{1,64}@([a-z0-9-]{1,200}.){1,5}[a-z]{1,6}$/', $mail)) {
+                    $notice = $notice . "请输入正确格式的邮件地址<br/>";
                 }
-                if($height != "" && ($height >220 || $height < 40)){
-                    $notice = $notice."请输入正常的身高值<br/>";
+                if ($birthday != "" && !preg_match('/^((((19|20)\d{2})-(0?(1|[3-9])|1[012])-(0?[1-9]|[12]\d|30))|(((19|20)\d{2})-(0?[13578]|1[02])-31)|(((19|20)\d{2})-0?2-(0?[1-9]|1\d|2[0-8]))|((((19|20)([13579][26]|[2468][048]|0[48]))|(2000))-0?2-29))$/', $birthday)) {
+                    $notice = $notice . "请输入正确格式的生日日期<br/>";
+                }
+                if ($height != "") {
+                    if (!preg_match('/^[0-9]*$/', $height)) {
+                        $notice = $notice . "请输入数字格式(单位cm)的身高<br/>";
+                    } else {
+                        if (($height > 220 || $height < 40)) {
+                            $notice = $notice . "请输入正常的身高值<br/>";
+                        }
+                    }
+                }
+                if ($width != "") {
+                    if (!preg_match('/^[0-9]*$/',$width)) {
+                        $notice = $notice . "请输入数字格式(单位kg)的体重<br/>";
+                    } else {
+                        if (($width > 300 || $width < 40)) {
+                            $notice = $notice . "请输入正常的体重值<br/>";
+                        }
+                    }
+                }
+                if ($money != "" && !preg_match('/^[0-9]*$/',$money)) {
+                    $notice = $notice . "请输入数字格式的金币值<br/>";
                 }
 
-                if($notice != ""){
+                if ($notice != "") {
                     echo $notice;
-                }
-                else{
+                } else {
                     /*根据数据库和用户输入的信息构建sql语句*/
                     include "mysqlConfigure.php";
                     $sql1 = "select * from user where userId='$userId'";
@@ -73,66 +94,62 @@ include "header.php";
                             $sql2 = "update user set name='$name'";
                         }
                         if ($passwd != "" && $passwd != $row1['password']) {
-                            if ($sql2 == ""){
+                            if ($sql2 == "") {
                                 $sql2 = "update user set password='$passwd'";
-                            }
-                            else
-                                $sql2  = $sql2. ",password='$passwd'";
+                            } else
+                                $sql2 = $sql2 . ",password='$passwd'";
                         }
                         if ($tell != "" && $tell != $row1['tell']) {
                             if ($sql2 == "")
                                 $sql2 = "update user set tell='$tell'";
                             else
-                                $sql2  = $sql2. ",tell='$tell'";
+                                $sql2 = $sql2 . ",tell='$tell'";
                         }
                         if ($mail != "" && $mail != $row1['mail']) {
                             if ($sql2 == "")
                                 $sql2 = "update user set mail='$mail'";
                             else
-                                $sql2  = $sql2. ",mail='$mail'";
+                                $sql2 = $sql2 . ",mail='$mail'";
                         }
                         if ($height != "" && $height != $row1['height']) {
                             if ($sql2 == "")
                                 $sql2 = "update user set height='$height'";
                             else
-                                $sql2  = $sql2. ",height='$height'";
+                                $sql2 = $sql2 . ",height='$height'";
                         }
                         if ($weight != "" && $weight != $row1['weight']) {
                             if ($sql2 == "")
                                 $sql2 = "update user set weight='$weight'";
                             else
-                                $sql2  = $sql2. ",weight='$weight'";
+                                $sql2 = $sql2 . ",weight='$weight'";
                         }
                         if ($sex != $row1['sex']) {
                             if ($sql2 == "")
                                 $sql2 = "update user set sex='$sex'";
                             else
-                                $sql2  = $sql2. ",sex='$sex'";
+                                $sql2 = $sql2 . ",sex='$sex'";
                         }
-                        if ($birthday != "" && $birthday!= $row1['birthday']) {
+                        if ($birthday != "" && $birthday != $row1['birthday']) {
                             if ($sql2 == "")
                                 $sql2 = "update user set birthday='$birthday'";
                             else
-                                $sql2  = $sql2. ",birthday='$birthday'";
+                                $sql2 = $sql2 . ",birthday='$birthday'";
                         }
                         if ($money != "" && $money != $row1['money']) {
                             if ($sql2 == "")
                                 $sql2 = "update user set money='$money'";
                             else
-                                $sql2  = $sql2. ",money='$money'";
+                                $sql2 = $sql2 . ",money='$money'";
                         }
-                        echo $sql2;
-                        if($sql2 != ""){
-                            $sql2  = $sql2. " where userId='$userId'";
-                            $result2=mysqli_query($conn,$sql2);
-                            if($result2){
+                        if ($sql2 != "") {
+                            $sql2 = $sql2 . " where userId='$userId'";
+                            $result2 = mysqli_query($conn, $sql2);
+                            if ($result2) {
                                 echo "修改成功<br/>";
-                            }
-                            else{
+                            } else {
                                 echo "修改失败<br/>";
                             }
-                        }
-                        else{
+                        } else {
                             echo "请至少更新一项信息";
                         }
                     }

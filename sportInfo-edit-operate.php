@@ -49,6 +49,9 @@ include "header.php";
                         $notice = $notice . "您未选择图片格式的文件,请重新上传<br/>";
                     }
                 }
+                if ($value != "" && !preg_match('/^[0-9]*$/',$value)) {
+                    $notice = $notice . "请输入数字格式的悬赏值<br/>";
+                }
 
 
                 if ($notice != "") {

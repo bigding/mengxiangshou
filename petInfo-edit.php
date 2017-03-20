@@ -85,7 +85,7 @@ include "header.php";
                                         <input type='file' name='picture'/>
                                     </div>
                                 </div>
-                                  <input type='text'  name='sId' value='$pId' class='hidden'/>
+                                  <input type='text'  name='pId' value='$pId' class='hidden'/>
                                 <div class='form-actions'>
                                     <button type='submit' class='btn btn-success'>提交</button>
                                 </div>

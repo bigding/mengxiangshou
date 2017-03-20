@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>宠物信息管理</title>
+    <title>服装信息管理</title>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
@@ -21,8 +21,8 @@ include "header.php";
 <div id="content">
     <div id="content-header">
         <div id="breadcrumb"><a href="userInfo-view.php" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>
-                宠物信息</a></div>
-        <h1>宠物信息</h1>
+                服装信息</a></div>
+        <h1>服装信息</h1>
     </div>
     <div class="container-fluid">
         <hr>

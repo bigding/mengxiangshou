@@ -65,8 +65,15 @@ include "header.php";
                                 echo '
                                 <tr class="gradeA">
                                 <td>'.$row1['cName'].'</td>
-                                <td>'.$row1['cValue'].'</td>
-                                <td>//二级查询</td>
+                                <td>'.$row1['cValue'].'</td>';
+                                $cId = $row1['cId'];
+                                $sql2 = "select pet.pName from pet,petClo where petClo.cId= '$cId' and petClo.pId = pet.pId";
+                                $result2 = mysqli_query($conn,$sql2);
+                                $row2 = mysqli_fetch_array($result2);
+                                echo'
+                                <td>'.$row2[pName].'</td>
+                                ';
+                                echo '
                                 <td>'.$row1['cDesc'].'</td>
                                 <td class="span2"><image src = '.$row1[cPath].'></td>
                                 <td>

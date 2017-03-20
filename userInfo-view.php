@@ -64,13 +64,27 @@
                                     <td>'.$row1['tell'].'</td>
                                     <td>'.$row1['mail'].'</td>
                                     <td>'.$row1['height'].'</td>
-                                    <td>'.$row1['weight'].'</td>
-                                    <td>'.$row1['sex'].'</td>
+                                    <td>'.$row1['weight'].'</td>';
+                                if($row1['sex'] == "0"){
+                                    echo '<td>女</td>';
+                                }
+                                else{
+                                    echo '<td>男</td>';
+                                }
+                                echo '
+                                    
                                     <td>'.$row1['birthday'].'</td>
                                     <td>'.$row1['money'].'</td>';
                                     /*第二层,查询用户宠物数量,后面做*/
+                                    //<td>2//后面完善</td>
+                                $userId=$row1['userId'];
+                                $sql2 = "SELECT count(*) num FROM mengxiangshou.userPet where userId='$userId'";
+                                $result2 = mysqli_query($conn,$sql2);
+                                $row2 = mysqli_fetch_array($result2);
                                     echo '
-                                    <td>2//后面完善</td>
+                                        <td>'.$row2['num'].'</td>
+                                    ';
+                                    echo '
                                     <td>
                                         <a href="userInfo-detail.php?userId='.$row1['userId'].'" class="btn btn-success btn-mini" data-original-title="查看详情">查看</a>
                                         <a href="userInfo-edit.php?userId='.$row1['userId'].'" class="btn btn-success btn-mini" data-original-title="编辑信息">编辑</a>

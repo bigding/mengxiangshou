@@ -75,13 +75,13 @@
                             <div class='control-group'>
                                 <label class='control-label'>身高 :</label>
                                 <div class='controls'>
-                                    <input type='text' class='span11' name='height' placeholder='".$row1['height']."'/>
+                                    <input type='text' class='span11' name='height' placeholder='".$row1['height']."cm'/>
                                 </div>
                             </div>
                             <div class='control-group'>
                                 <label class='control-label'>体重 :</label>
                                 <div class='controls'>
-                                    <input type='text' class='span11' name='weight' placeholder='".$row1['weight']."'/>
+                                    <input type='text' class='span11' name='weight' placeholder='".$row1['weight']."kg'/>
                                 </div>
                             </div>                           <!--0为女生 1为男生*/-->
                             <div class='control-group'>
