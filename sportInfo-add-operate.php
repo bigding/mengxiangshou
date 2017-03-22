@@ -39,18 +39,23 @@ include "header.php";
                 include_once "mysqlConfigure.php";
                 $notice = "";
                 if ($name == "" || $value == "" || $desc == "" || $detail == "") {
-                    $notice += "请您填写完成所有的输入框再提交<br/>";
+                    $notice .= "请您填写完成所有的输入框再提交<br/>";
+                } else {
+                    if ($_FILES["picture"]["error"] > 0) {
+                        $notice .= "上传图片发生错误,请重新上传<br/>";
+                    } else {
+                        $image = explode("/", $_FILES["picture"]["type"]);
+                        if ($image[0] != 'image') {
+                            $notice .= "您未选择图片,请重新上传<br/>";
+                        }
+                    }
                 }
 
-                if ($_FILES["picture"]["error"] > 0) {
-                    $notice += "上传图片发生错误,请重新上传<br/>";
-                }
 
-                $image = explode("/", $_FILES["picture"]["type"]);
-                //                print_r($image);
-                if ($image[0] != 'image') {
-                    $notice += "您未选择图片,请重新上传<br/>";
-                }else{
+                /*验证部分的处理完成后判断是否存在错误*/
+                if ($notice != "") {
+                    echo $notice;
+                } else {
                     /*验证图片的MD5值是否存在*/
                     $md5num = md5_file($_FILES["picture"]["tmp_name"]);
                     $file_exist;
@@ -67,19 +72,11 @@ include "header.php";
                         } elseif ($row_num == 0) {
                             $file_exist = false;
                         } else {
-                            $notice += "查询数据库出错,请再次尝试<br/>";
+                            echo "查询数据库出错,请再次尝试<br/>";
+                            return;
                         }
                     }
-                }
 
-                if ($value != "" && !preg_match('^\d{n}$',$value)) {
-                    $notice = $notice . "请输入数字格式的悬赏值<br/>";
-                }
-
-                /*验证部分的处理完成后判断是否存在错误*/
-                if ($notice != "") {
-                    echo $notice;
-                } else {
                     $sql5 = "SELECT count(*) FROM mengxiangshou.sports where sName='$name'";
                     $result5 = mysqli_query($conn, $sql5);
                     $row5 = mysqli_fetch_row($result5);

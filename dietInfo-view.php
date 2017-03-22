@@ -52,6 +52,7 @@ include "header.php";
                             <tr>
                                 <th>名称</th>
                                 <th>饮食悬赏金额</th>
+                                <th>适用BMI区间</th>
                                 <th>饮食简介</th>
                                 <th>饮食详情</th>
                                 <th>图片</th>
@@ -67,6 +68,7 @@ include "header.php";
                                 <tr class="gradeA">
                                     <td>' . $row1['dName'] . '</td>
                                     <td>' . $row1['dValue'] . '</td>
+                                    <td>' . $row1['minBMI'] . '-'. $row1['maxBMI'] .'</td>
                                     <td>' . $row1['dDesc'] . '</td>
                                     <td>' . $row1['dDetail'] . '</td>
                                     <td class="span2"><image src = ' . $row1[dPath] . '></td>

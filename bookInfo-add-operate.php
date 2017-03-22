@@ -39,43 +39,45 @@ include "header.php";
                 include_once "mysqlConfigure.php";
                 $notice = "";
                 if ($name == "" || $value == "" || $desc == "" || $detail == "") {
-                    $notice += "请您填写完成所有的输入框再提交<br/>";
-                }
-
-                if ($_FILES["picture"]["error"] > 0) {
-                    $notice += "上传图片发生错误,请重新上传<br/>";
-                }
-
-                $image = explode("/", $_FILES["picture"]["type"]);
-                //                print_r($image);
-                if ($image[0] != 'image') {
-                    $notice += "您为选择图片,请重新上传<br/>";
-                }
-
-                /*验证图片的MD5值是否存在*/
-                $md5num = md5_file($_FILES["picture"]["tmp_name"]);
-                $file_exist;
-                $sql1 = "select * from images_md5 where image_md5='$md5num'";
-                $result1 = mysqli_query($conn, $sql1);
-                if (!$result1) {
-                    echo mysqli_error($conn);
+                    $notice .= "请您填写完成所有的输入框再提交<br/>";
                 } else {
-                    $row_num = mysqli_num_rows($result1);
-                    if ($row_num == 1) {
-                        $file_exist = true;
-                        $row1 = mysqli_fetch_array($result1);
-                        $path = $row1["image_path"];
-                    } elseif ($row_num == 0) {
-                        $file_exist = false;
+                    if ($_FILES["picture"]["error"] > 0) {
+                        $notice .= "上传图片发生错误,请重新上传<br/>";
                     } else {
-                        $notice += "查询数据库出错,请再次尝试<br/>";
+                        $image = explode("/", $_FILES["picture"]["type"]);
+                        if ($image[0] != 'image') {
+                            $notice .= "您未选择图片,请重新上传<br/>";
+                        }
                     }
                 }
+
+
 
                 /*验证部分的处理完成后判断是否存在错误*/
                 if ($notice != "") {
                     echo $notice;
                 } else {
+                    /*验证图片的MD5值是否存在*/
+                    $md5num = md5_file($_FILES["picture"]["tmp_name"]);
+                    $file_exist;
+                    $sql1 = "select * from images_md5 where image_md5='$md5num'";
+                    $result1 = mysqli_query($conn, $sql1);
+                    if (!$result1) {
+                        echo mysqli_error($conn);
+                    } else {
+                        $row_num = mysqli_num_rows($result1);
+                        if ($row_num == 1) {
+                            $file_exist = true;
+                            $row1 = mysqli_fetch_array($result1);
+                            $path = $row1["image_path"];
+                        } elseif ($row_num == 0) {
+                            $file_exist = false;
+                        } else {
+                            echo "查询数据库出错,请再次尝试<br/>";
+                            return;
+                        }
+                    }
+
                     $sql5 = "SELECT count(*) FROM mengxiangshou.book where bName='$name'";
                     $result5 = mysqli_query($conn, $sql5);
                     $row5 = mysqli_fetch_row($result5);

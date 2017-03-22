@@ -52,6 +52,7 @@ include "header.php";
                             <tr>
                                 <th>名称</th>
                                 <th>运动悬赏价值</th>
+                                <th>适用BMI区间</th>
                                 <th>运动简介</th>
                                 <th>运动详情</th>
                                 <th>运动图片</th>
@@ -67,6 +68,7 @@ include "header.php";
                                 <tr class="gradeA">
                                 <td>' . $row1['sName'] . '</td>
                                 <td>' . $row1['sValue'] . '</td>
+                                <td>' . $row1['minBMI'] . '-'. $row1['maxBMI'] .'</td>
                                 <td>' . $row1['sDesc'] . '</td>
                                 <td>' . $row1['sDetail'] . '</td>
                                 <td class="span2"><image src = ' . $row1[sPath] . '></td>

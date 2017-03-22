@@ -46,7 +46,15 @@ include "header.php";
                             }
                             else{
                                 $row1 = mysqli_fetch_array($result1);
-                                
+
+                                $bmiArray = array(0, 18.5, 24, 27, 30, 100);
+                                $bmiType = 0;
+                                for($i = 0 ; $i < count($bmiArray);$i++){
+                                    if($bmiArray[$i] == $row1['minBMI']){
+                                        $bmiType = $i;
+                                    }
+                                }
+
                                 echo "
                                 <div class='control-group'>
                                     <label class='control-label'>饮食名称 :</label>
@@ -60,6 +68,29 @@ include "header.php";
                                         <input type='text'  class='span11' name='dvalue' placeholder='".$row1['dValue']."'/>
                                     </div>
                                 </div>
+                                ";
+
+                                echo '
+                                    <div class="control-group">
+                                        <label class="control-label">适用BMI区间</label>
+                                        <div class="controls">
+                                            <select name="bmiType">
+                                            <option value="0">无</option>';
+                                for($j = 1; $j < 6; $j++){
+                                    if($j == $bmiType){
+                                        echo '<option value="'.$j.'" selected>'.$bmiArray[$j].'-'.$bmiArray[$j+1].'</option>';
+                                    }
+                                    else{
+                                        echo '<option value="'.$j.'">'.$bmiArray[$j].'-'.$bmiArray[$j+1].'</option>';
+                                    }
+                                }
+
+                                echo '
+                                            </select>
+                                        </div>
+                                    </div>
+                                    ';
+                                echo "
                                 <div class='control-group'>
                                     <label class='control-label'>饮食简介 :</label>
                                     <div class='controls'>
