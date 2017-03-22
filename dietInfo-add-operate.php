@@ -112,7 +112,7 @@ include "header.php";
 
                         }
 
-                        $minBMI = $bmiArray[$bmiType - 1];
+                        $minBMI = $bmiArray[$bmiType-1];
                         $maxBMI = $bmiArray[$bmiType];
                         $sql2 = "insert into diet (dName,dValue,minBMI,maxBMI,dDesc,dDetail,dPath)
                       values ('$name','$value','$minBMI','$maxBMI','$desc','$detail','$path')";

@@ -60,6 +60,19 @@ include "header.php";
                                 </div>
                             </div>
                             <div class="control-group">
+                                <label class="control-label">适用BMI区间</label>
+                                <div class="controls">
+                                    <select name="bmiType">
+                                        <option value="0">无</option>'
+                                        <option value="1">0-18.5</option>'
+                                        <option value="2">18.5-24</option>'
+                                        <option value="3">24-27</option>'
+                                        <option value="4">27-30</option>'
+                                        <option value="5">30-100</option>'
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="control-group">
                                 <label class="control-label">运动简介 :</label>
                                 <div class="controls">
                                     <input type="text" name="desc" class="span11"/>

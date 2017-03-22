@@ -34,13 +34,23 @@ include "header.php";
                 $value = trim($_POST['svalue']);
                 $desc = trim($_POST['sdesc']);
                 $detail = trim($_POST['sdetail']);
-                $path;
+                $bmiType = trim($_POST['bmiType']);
 
+                $path;
+                $bmiArray = array(0, 18.5, 24, 27, 30, 100);
                 /*根据数据库和用户输入的信息构建sql语句*/
                 include "mysqlConfigure.php";
+
+                /*查询数据库里面对应类型的bmi值*/
+                $minBMI = $bmiArray[$bmiType-1];
+                $maxBMI = $bmiArray[$bmiType];
+                $sql7 = "select count(*) num from sports where minBMI = '$minBMI' and  sId = '$sId'";
+                $result7 = mysqli_query($conn,$sql7);
+                $row7 = mysqli_fetch_array($result7);
+
                 $notice = "";
                 /*是否输入的验证*/
-                if ($name == "" && $value == "" && $desc == "" && $detail == "" && $_FILES['picture']['name'] == "") {
+                if ($name == "" && $value == "" && $desc == "" && $detail == "" && $_FILES['picture']['name'] == ""&& $row7['num'] == 1) {
                     $notice = $notice . "请至少更新一项信息<br/>";
                 }
                 if (!$_FILES["picture"]["error"]) {
@@ -82,6 +92,12 @@ include "header.php";
                             $sql2 = "update sports set sDetail='$detail'";
                         else
                             $sql2 = $sql2 . ",sDetail='$detail'";
+                    }
+                    if($row7['num'] != 1){
+                        if($sql2 == "")
+                            $sql2 = "update sports set maxBMI='$maxBMI',minBMI = '$minBMI'";
+                        else
+                            $sql2 = $sql2 . ",maxBMI='$maxBMI',minBMI = '$minBMI'";
                     }
                     /*关于图片是否改变的判断,已经相关sql语句的生成*/
                     if (!$_FILES['picture']['error']) {

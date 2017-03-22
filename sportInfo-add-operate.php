@@ -31,14 +31,16 @@ include "header.php";
                 <?php
                 $name = trim($_POST['name']);
                 $value = trim($_POST['value']);
+                $bmiType = trim($_POST['bmiType']);
                 $desc = trim($_POST['desc']);
                 $detail = trim($_POST['detail']);
                 $path;
                 $file_name;
 
+                $bmiArray = array(0, 18.5, 24, 27, 30, 100);
                 include_once "mysqlConfigure.php";
                 $notice = "";
-                if ($name == "" || $value == "" || $desc == "" || $detail == "") {
+                if ($name == "" || $value == "" || $desc == "" || $detail == ""|| $bmiType == 0) {
                     $notice .= "请您填写完成所有的输入框再提交<br/>";
                 } else {
                     if ($_FILES["picture"]["error"] > 0) {
@@ -110,9 +112,10 @@ include "header.php";
 
                         }
 
-
-                        $sql2 = "insert into sports (sName,sValue,sDesc,sDetail,sPath)
-                      values ('$name','$value','$desc','$detail','$path')";
+                        $minBMI = $bmiArray[$bmiType-1];
+                        $maxBMI = $bmiArray[$bmiType];
+                        $sql2 = "insert into sports (sName,sValue,minBMI,maxBMI,sDesc,sDetail,sPath)
+                      values ('$name','$value','$minBMI','$maxBMI','$desc','$detail','$path')";
                         $result2 = mysqli_query($conn, $sql2);
                         if (mysqli_affected_rows($conn) == 1) {
                             echo "操作成功";

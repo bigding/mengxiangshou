@@ -46,6 +46,15 @@ include "header.php";
                                 echo mysqli_error($conn);
                             } else {
                                 $row1 = mysqli_fetch_array($result1);
+
+                                $bmiArray = array(0, 18.5, 24, 27, 30, 100);
+                                $bmiType = 0;
+                                for($i = 0 ; $i < count($bmiArray);$i++){
+                                    if($bmiArray[$i] == $row1['minBMI']){
+                                        $bmiType = $i + 1;
+                                    }
+                                }
+
                                 echo "
                                     <div class='control-group'>
                                         <label class='control-label'>运动名称 </label>
@@ -58,7 +67,29 @@ include "header.php";
                                         <div class='controls'>
                                             <input type='text'  class='span11' name='svalue' placeholder='".$row1['sValue']."'/>
                                         </div>
+                                    </div>";
+
+                                echo '
+                                    <div class="control-group">
+                                        <label class="control-label">适用BMI区间</label>
+                                        <div class="controls">
+                                            <select name="bmiType">';
+                                for($j = 1; $j < 6; $j++){
+                                    if($j == $bmiType){
+                                        echo '<option value="'.$j.'" selected>'.$bmiArray[$j-1].'-'.$bmiArray[$j].'</option>';
+                                    }
+                                    else{
+                                        echo '<option value="'.$j.'">'.$bmiArray[$j-1].'-'.$bmiArray[$j].'</option>';
+                                    }
+                                }
+
+                                echo '
+                                            </select>
+                                        </div>
                                     </div>
+                                    ';
+
+                                echo "
                                     <div class='control-group'>
                                         <label class='control-label'>运动简介 </label>
                                         <div class='controls'>

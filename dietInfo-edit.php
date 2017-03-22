@@ -51,7 +51,7 @@ include "header.php";
                                 $bmiType = 0;
                                 for($i = 0 ; $i < count($bmiArray);$i++){
                                     if($bmiArray[$i] == $row1['minBMI']){
-                                        $bmiType = $i;
+                                        $bmiType = $i + 1;
                                     }
                                 }
 
@@ -74,16 +74,15 @@ include "header.php";
                                     <div class="control-group">
                                         <label class="control-label">适用BMI区间</label>
                                         <div class="controls">
-                                            <select name="bmiType">
-                                            <option value="0">无</option>';
-                                for($j = 1; $j < 6; $j++){
-                                    if($j == $bmiType){
-                                        echo '<option value="'.$j.'" selected>'.$bmiArray[$j].'-'.$bmiArray[$j+1].'</option>';
-                                    }
-                                    else{
-                                        echo '<option value="'.$j.'">'.$bmiArray[$j].'-'.$bmiArray[$j+1].'</option>';
-                                    }
-                                }
+                                            <select name="bmiType">';
+                                                for($j = 1; $j < 6; $j++){
+                                                    if($j == $bmiType){
+                                                        echo '<option value="'.$j.'" selected>'.$bmiArray[$j-1].'-'.$bmiArray[$j].'</option>';
+                                                    }
+                                                    else{
+                                                        echo '<option value="'.$j.'">'.$bmiArray[$j-1].'-'.$bmiArray[$j].'</option>';
+                                                    }
+                                                }
 
                                 echo '
                                             </select>
