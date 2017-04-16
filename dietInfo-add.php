@@ -62,7 +62,7 @@ include "header.php";
                             <div class="control-group">
                                 <label class="control-label">适用BMI区间</label>
                                 <div class="controls">
-                                    <select name="bmiType">
+                                    <select name="bmiType"  class="span3">
                                         <option value="0">无</option>'
                                         <option value="1">0-18.5</option>'
                                         <option value="2">18.5-24</option>'
@@ -90,6 +90,135 @@ include "header.php";
                                     <input type="file" name="picture"/>
                                 </div>
                             </div>
+                            <div class="control-group">
+                                <label class="control-label">推荐理由</label>
+                                <div class="controls">
+                                    <textarea class="span11" name="detail"></textarea>
+                                </div>
+                            </div>
+                            <div class="control-group step-num-1">
+                                <label class="control-label">食材</label>
+                                <div class="controls">
+                                    <input type="file" name="meterial"/>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">步骤数量</label>
+                                <div class="controls">
+                                    <select name="step" class="span3" id="step-num">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3" selected>3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="control-group step-num-1">
+                                <label class="control-label">步骤一</label>
+                                <div class="controls">
+                                    <input type="file" name="stepPicture1"/>
+                                </div>
+                                <label class="control-label">说明</label>
+                                <div class="controls">
+                                    <input type="text" class="span11" name="step-desc1"/>
+                                </div>
+                            </div>
+                            <div class="control-group step-num-2">
+                                <label class="control-label">步骤二</label>
+                                <div class="controls">
+                                    <input type="file" name="stepPicture2"/>
+                                </div>
+                                <label class="control-label">说明</label>
+                                <div class="controls">
+                                    <input type="text" class="span11" name="step-desc2"/>
+                                </div>
+                            </div>
+                            <div class="control-group step-num-3">
+                                <label class="control-label">步骤三</label>
+                                <div class="controls">
+                                    <input type="file" name="stepPicture3"/>
+                                </div>
+                                <label class="control-label">说明</label>
+                                <div class="controls">
+                                    <input type="text" class="span11" name="step-desc3"/>
+                                </div>
+                            </div>
+                            <div class="control-group step-num-4">
+                                <label class="control-label">步骤四</label>
+                                <div class="controls">
+                                    <input type="file" name="stepPicture4"/>
+                                </div>
+                                <label class="control-label">说明</label>
+                                <div class="controls">
+                                    <input type="text" class="span11" name="step-desc4"/>
+                                </div>
+                            </div>
+                            <div class="control-group step-num-5">
+                                <label class="control-label">步骤五</label>
+                                <div class="controls">
+                                    <input type="file" name="stepPicture5"/>
+                                </div>
+                                <label class="control-label">说明</label>
+                                <div class="controls">
+                                    <input type="text" class="span11" name="step-desc5"/>
+                                </div>
+                            </div>
+                            <div class="control-group step-num-6">
+                                <label class="control-label">步骤六</label>
+                                <div class="controls">
+                                    <input type="file" name="stepPicture6"/>
+                                </div>
+                                <label class="control-label">说明</label>
+                                <div class="controls">
+                                    <input type="text" class="span11" name="step-desc6"/>
+                                </div>
+                            </div>
+                            <div class="control-group step-num-7">
+                                <label class="control-label">步骤七</label>
+                                <div class="controls">
+                                    <input type="file" name="stepPicture7"/>
+                                </div>
+                                <label class="control-label">说明</label>
+                                <div class="controls">
+                                    <input type="text" class="span11" name="step-desc7"/>
+                                </div>
+                            </div>
+                            <div class="control-group step-num-8">
+                                <label class="control-label">步骤八</label>
+                                <div class="controls">
+                                    <input type="file" name="stepPicture8"/>
+                                </div>
+                                <label class="control-label">说明</label>
+                                <div class="controls">
+                                    <input type="text" class="span11" name="step-desc8"/>
+                                </div>
+                            </div>
+                            <div class="control-group step-num-9">
+                                <label class="control-label">步骤九</label>
+                                <div class="controls">
+                                    <input type="file" name="stepPicture9"/>
+                                </div>
+                                <label class="control-label">说明</label>
+                                <div class="controls">
+                                    <input type="text" class="span11" name="step-desc9"/>
+                                </div>
+                            </div>
+                            <div class="control-group step-num-10">
+                                <label class="control-label">步骤十</label>
+                                <div class="controls">
+                                    <input type="file" name="stepPicture10"/>
+                                </div>
+                                <label class="control-label">说明</label>
+                                <div class="controls">
+                                    <input type="text" class="span11" name="step-desc10"/>
+                                </div>
+                            </div>
                             <div class="form-actions">
                                 <button type="submit" class="btn btn-success">提交</button>
                             </div>
@@ -112,5 +241,6 @@ include "footer.php";
 <script src="js/jquery.dataTables.min.js"></script>
 <script src="js/matrix.js"></script>
 <script src="js/matrix.tables.js"></script>
+<script src="js/dietInfo-add.js"></script>
 </body>
 </html>

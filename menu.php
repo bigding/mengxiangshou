@@ -8,12 +8,22 @@
 </head>
 <body>
     <div class="span12 container">
+        <?php
+        $menuId = $_GET['menuId'];
+
+        include_once 'mysqlConfigure.php';
+        $sql1 = "select * from menu where menuId = '$menuId'";
+        $sql2 = "select * from diet where dId = (select dId from menu where menuId = '$menuId')";
+        $result1 = mysqli_query($conn,$sql1);
+        $result2 = mysqli_query($conn,$sql2);
+        $row2 = mysqli_fetch_array($result2);
+        ?>
         <div class="span12 top_image">
-            <img src="images/yuanyuan.png">
+            <img src="<?php echo $row2['dPath']?>">
         </div>
         <div class="common_box top_name">
             <p>
-                冬瓜肉丸汤
+                <?php echo $row2['dName']?>
             </p>
         </div>
         <div class="feature common_box">
@@ -22,8 +32,7 @@
             </div>
             <div class="feature_content common_content">
                 <p>
-                    &nbsp;&nbsp;&nbsp;&nbsp;冬瓜中含有丙醇二酸,能有效的一直糖转换为脂肪,加之冬瓜本身不含有脂肪,热量不高,对瘦身减肥有促进功效
-                    &nbsp;&nbsp;&nbsp;&nbsp;.............
+                    <?php echo $row2['dDesc']?>
                 </p>
             </div>
         </div>
@@ -40,16 +49,19 @@
                 <span>步骤</span>
             </div>
             <div class="step_content common_content">
-                <div class="step_list">
-                    <p>-1-</p>
-                    <img src="images/yuanyuan.png">
-                    <p>准备好猪肉馅,加入各种调料拌匀</p>
-                </div>
-                <div class="step_list">
-                    <p>-2-</p>
-                    <img src="images/yuanyuan.png">
-                    <p>准备好猪肉馅,加入各种调料拌匀</p>
-                </div>
+                <?php
+                $row1 = mysqli_fetch_assoc($result1);
+                $step = $row1['stepNum'];
+                for($i = 1; $i <= $step; $i++){
+                    echo '
+                        <div class="step_list">
+                            <p>-'.$i.'-</p>
+                            <img src="'.$row1["stepImg".$i].'">
+                            <p>'.$row1["stepDesc".$i].'</p>
+                        </div>
+                    ';
+                }
+                ?>
             </div>
         </div>
     </div>
