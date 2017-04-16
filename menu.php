@@ -41,7 +41,7 @@
                 <span>食材</span>
             </div>
             <div class="meterial_content common_content">
-                <img src="images/yuanyuan.png">
+                <img src="<?php echo $row2['meterialPath']?>">
             </div>
         </div>
         <div class="step common_box">
