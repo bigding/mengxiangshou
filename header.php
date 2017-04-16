@@ -29,6 +29,6 @@
         <li><a href="sportInfo-view.php"><i class="icon icon-th"></i> <span>运动信息</span></a></li><!--运动名称,运动悬赏价值,运动简介,操作:查看详情-->
         <li><a href="dietInfo-view.php"><i class="icon icon-fullscreen"></i> <span>饮食信息</span></a></li><!--饮食名称,饮食悬赏金额,饮食简介,操作:查看详情,查看图片-->
         <li><a href="bookInfo-view.php"><i class="icon icon-list"></i> <span>读物信息</span> </a></li><!--读物名称,读物描述,读物悬赏金额,读物简介,操作:查看详情,查看图片-->
-<!--        <li><a href="#"><i class="icon icon-tint"></i> <span>日推设计</span></a></li><!--设计日推饮食,运动,读物-->-->
+<!--        <li><a href="#"><i class="icon icon-tint"></i> <span>日推设计</span></a></li><!--设计日推饮食,运动,读物-->
     </ul>
 </div>
