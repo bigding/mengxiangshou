@@ -16,6 +16,7 @@
         $sql2 = "select * from diet where dId = (select dId from menu where menuId = '$menuId')";
         $result1 = mysqli_query($conn,$sql1);
         $result2 = mysqli_query($conn,$sql2);
+        $row1 = mysqli_fetch_assoc($result1);
         $row2 = mysqli_fetch_array($result2);
         ?>
         <div class="span12 top_image">
@@ -41,7 +42,7 @@
                 <span>食材</span>
             </div>
             <div class="meterial_content common_content">
-                <img src="<?php echo $row2['meterialPath']?>">
+                <img src="<?php echo $row1['meterialPath']?>">
             </div>
         </div>
         <div class="step common_box">
@@ -50,7 +51,6 @@
             </div>
             <div class="step_content common_content">
                 <?php
-                $row1 = mysqli_fetch_assoc($result1);
                 $step = $row1['stepNum'];
                 for($i = 1; $i <= $step; $i++){
                     echo '
