@@ -60,7 +60,7 @@ include "header.php";
                             <div class="control-group">
                                 <label class="control-label">饮食悬赏金额 :</label>
                                 <div class="controls">
-                                    <input type="text"  class="span11" name="value" placeholder="服装价值:###"/>
+                                    <input type="text"  class="span11" name="value" placeholder="饮食悬赏价值:###"/>
                                 </div>
                             </div>
                             <div class="control-group">

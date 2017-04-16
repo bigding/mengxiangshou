@@ -233,7 +233,7 @@ include "header.php";
                         $maxBMI = $bmiArray[$bmiType];
                         $menuId = 1;
                         $dLink = "";
-                        $sql8 = "SELECT id+1 num FROM mengxiangshou.menu WHERE id = (SELECT MAX(id) FROM menu)";
+                        $sql8 = "SELECT menuId+1 num FROM mengxiangshou.menu WHERE menuId = (SELECT MAX(menuId) FROM menu);";
                         $result8 = mysqli_query($conn, $sql8);
                         if (mysqli_num_rows($result8) != 0) {
                             $row8 = mysqli_fetch_array($result8);
