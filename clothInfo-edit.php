@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,6 +20,7 @@
 </head>
 <body>
 <?php
+require_once 'isLogin.php';
 include "header.php";
 ?>
 <div id="content">

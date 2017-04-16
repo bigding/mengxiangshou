@@ -1,4 +1,5 @@
 <?php
+
 $sqlData = $_POST['sql'];
 $id = $_POST['id'];
 $idType = $_POST['id_type'];
