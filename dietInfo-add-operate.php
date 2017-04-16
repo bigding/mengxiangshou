@@ -79,6 +79,7 @@ include "header.php";
                                 $meterialPath = $row1["image_path"];
                             } elseif ($row_num == 0) {
                                 /*存储图片并且生成图片名称*/
+                                $image = explode("/", $_FILES["meterial"]["type"]);
                                 $sql4 = "SELECT id+1 num FROM mengxiangshou.images_md5 WHERE id = (SELECT MAX(id) FROM images_md5)";
                                 $result4 = mysqli_query($conn, $sql4);
                                 if (mysqli_num_rows($result4) == 0) {
@@ -243,26 +244,26 @@ include "header.php";
 
                         $sql2 = "insert into diet (dName,dValue,minBMI,maxBMI,dDesc,dDetail,dLink,dPath)
                       values ('$name','$value','$minBMI','$maxBMI','$desc','$detail','$dLink','$path')";
-                        $result2 = mysqli_query($conn, $sql2);
-                        /*处理描述图片和除菜单步骤信息的部分完*/
-                        /*处理菜单步骤的部分*/
-                        /*获取对应的饮食Id*/
-                        $sql9 = "select dId from diet where dId = (select MAX(dId) from diet)";
-                        $result9 = mysqli_query($conn,$sql9);
-                        $row9 = mysqli_fetch_array($result9);
-                        $dId = $row9[0];
-
-
-                        $sql7 = "insert into menu (menuId,dId,meterialPath,stepNum,stepImg1,stepDesc1,stepImg2,stepDesc2,stepImg3,stepDesc3,stepImg4,stepDesc4,stepImg5,stepDesc5,stepImg6,stepDesc6,stepImg7,stepDesc7,stepImg8,stepDesc8,stepImg9,stepDesc9,stepImg10,stepDesc10)
-                      VALUES ('$menuId','$dId','$meterialPath','{$step[0][0]}','{$step[1][1]}','{$step[1][0]}','{$step[2][1]}','{$step[2][0]}','{$step[3][1]}','{$step[3][0]}','{$step[4][1]}','{$step[4][0]}','{$step[5][1]}','{$step[5][0]}','{$step[6][1]}','{$step[6][0]}','{$step[7][1]}','{$step[7][0]}','{$step[8][1]}','{$step[8][0]}','{$step[9][1]}','{$step[9][0]}','{$step[10][1]}','{$step[10][0]}')";
-                        /*处理菜单步骤的部分完*/
-
-                        $result7 = mysqli_query($conn, $sql7);
-                        if ($result7 && $result6) {
-                            echo "操作成功";
-                        } else {
-                            echo mysqli_error($conn);
-                        }
+//                        $result2 = mysqli_query($conn, $sql2);
+//                        /*处理描述图片和除菜单步骤信息的部分完*/
+//                        /*处理菜单步骤的部分*/
+//                        /*获取对应的饮食Id*/
+//                        $sql9 = "select dId from diet where dId = (select MAX(dId) from diet)";
+//                        $result9 = mysqli_query($conn,$sql9);
+//                        $row9 = mysqli_fetch_array($result9);
+//                        $dId = $row9[0];
+//
+//
+//                        $sql7 = "insert into menu (menuId,dId,meterialPath,stepNum,stepImg1,stepDesc1,stepImg2,stepDesc2,stepImg3,stepDesc3,stepImg4,stepDesc4,stepImg5,stepDesc5,stepImg6,stepDesc6,stepImg7,stepDesc7,stepImg8,stepDesc8,stepImg9,stepDesc9,stepImg10,stepDesc10)
+//                      VALUES ('$menuId','$dId','$meterialPath','{$step[0][0]}','{$step[1][1]}','{$step[1][0]}','{$step[2][1]}','{$step[2][0]}','{$step[3][1]}','{$step[3][0]}','{$step[4][1]}','{$step[4][0]}','{$step[5][1]}','{$step[5][0]}','{$step[6][1]}','{$step[6][0]}','{$step[7][1]}','{$step[7][0]}','{$step[8][1]}','{$step[8][0]}','{$step[9][1]}','{$step[9][0]}','{$step[10][1]}','{$step[10][0]}')";
+//                        /*处理菜单步骤的部分完*/
+//
+//                        $result7 = mysqli_query($conn, $sql7);
+//                        if ($result7 && $result6) {
+//                            echo "操作成功";
+//                        } else {
+//                            echo mysqli_error($conn);
+//                        }
                     }
                 }
 
